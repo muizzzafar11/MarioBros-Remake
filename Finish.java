@@ -16,7 +16,7 @@ public class Finish extends World
     public Finish()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
-        super(1000, 1000, 1); 
+        super(1500, 1000, 1); 
         addObject(new Floor2(), 125, 1000);
         addObject(new Floor2(), 375, 1000);
         addObject(new Floor2(), 625, 1000);
