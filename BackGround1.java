@@ -9,8 +9,8 @@ import java.awt.Dimension;
  */
 public class BackGround1 extends World
 {
-    public static Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-    public static int width = (int)screenSize.getWidth();
+    public static Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize(); //gets resolution of current display
+    public static int width = (int)screenSize.getWidth(); 
     public static int height = (int)screenSize.getHeight();
     /**
      * Constructor for objects of class BackGround1.
@@ -18,7 +18,7 @@ public class BackGround1 extends World
      */
     public BackGround1()
     {    
-        super((int)(screenSize.getWidth()/2.5), (int)(screenSize.getHeight()/1.25), 1);        
+        super((int)(screenSize.getWidth()/2.5), (int)(screenSize.getHeight()/1.25), 1); //scales the size of the screen       
         addObject(new DK(), 200, 150);
         addObject(new Floor(), 125, 219);
         addObject(new Floor(), 375, 219);
