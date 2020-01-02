@@ -9,12 +9,12 @@ public class BackGround1 extends World
     public static int width = (int)(screenSize.getWidth()-500); 
     public static int height = (int)(screenSize.getHeight()/1.25);
     
-    private static int mod = 2;
     private static int floorDist = 75;
     public BackGround1()
     {    
         // Scales the size of the screen
-        super(width, height, 1);        
+        super(width, height, 1); 
+        int mod = 2;
         addObject(new DK(), 100, (int)(height/9.75));
         
         for(int i = 100; i < height; i += floorDist) {
@@ -22,9 +22,8 @@ public class BackGround1 extends World
                 for(int j = 0; j < width-30; j += 250) {
                     addObject(new Floor(), j, i);
                 }   
-            }
-            else{
-                for(int k = width; k > 30; k -= 200) {
+            }else{
+                for(int k = width; k > 30; k -= 250) {
                     addObject(new Floor2(), k, i);
                 }
             }
