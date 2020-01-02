@@ -5,6 +5,13 @@ public class Mario extends Actor
     String Marioimage = "mariopixelCopy.png";
     long lastTime;
     int Lives = 3;
+    
+    public Mario() {
+        GreenfootImage marioImage = getImage();
+        marioImage.scale(marioImage.getWidth()-30, marioImage.getHeight()-30);
+        setImage(marioImage);
+    }
+    
     public void act() 
     {
         speed = speed + 1;

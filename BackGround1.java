@@ -1,43 +1,36 @@
 import greenfoot.*;
 import java.awt.Toolkit;
 import java.awt.Dimension;
-/**
- * Write a description of class BackGround1 here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
+
 public class BackGround1 extends World
 {
-    public static Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize(); //gets resolution of current display
-    public static int width = (int)screenSize.getWidth(); 
-    public static int height = (int)screenSize.getHeight();
-    /**
-     * Constructor for objects of class BackGround1.
-     * 
-     */
+    // Gets resolution of current display
+    public static Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize(); 
+    public static int width = (int)(screenSize.getWidth()-500); 
+    public static int height = (int)(screenSize.getHeight()/1.25);
+    
+    private static int mod = 2;
+    private static int floorDist = 75;
     public BackGround1()
     {    
-        super((int)(screenSize.getWidth()/2.5), (int)(screenSize.getHeight()/1.25), 1); //scales the size of the screen       
-        addObject(new DK(), 200, 150);
-        addObject(new Floor(), 125, 219);
-        addObject(new Floor(), 375, 219);
-        addObject(new Floor(), 625, 219);
-        addObject(new Floor(), 875, 219);
-        addObject(new Floor2(), 625, 500);
-        addObject(new Floor2(), 875, 500);
-        addObject(new Floor2(), 1125, 500);
-        addObject(new Floor2(), 1375, 500);
-        addObject(new Floor(), 125, 781);
-        addObject(new Floor(), 375, 781);
-        addObject(new Floor(), 625, 781);
-        addObject(new Floor(), 875, 781);
-        addObject(new Floor2(), 125, 1000);
-        addObject(new Floor2(), 375, 1000);
-        addObject(new Floor2(), 625, 1000);
-        addObject(new Floor2(), 875, 1000);
-        addObject(new Floor2(), 1125, 1000);
-        addObject(new Floor2(), 1375, 1000);
-        addObject(new Mario(), 125, 940);
+        // Scales the size of the screen
+        super(width, height, 1);        
+        addObject(new DK(), 100, (int)(height/9.75));
+        
+        for(int i = 100; i < height; i += floorDist) {
+            if((mod % 2) == 0){
+                for(int j = 0; j < width-30; j += 250) {
+                    addObject(new Floor(), j, i);
+                }   
+            }
+            else{
+                for(int k = width; k > 30; k -= 200) {
+                    addObject(new Floor2(), k, i);
+                }
+            }
+            mod += 1;
+        }
+        // Make a floor at the bottom of the screen upon which mario will be standing
+        addObject(new Mario(), 125, (height-60));
     }
 }
