@@ -9,7 +9,7 @@ public class Mario extends Actor
     private GreenfootImage marioImage;
     public Mario() {
         marioImage = getImage();
-        marioImage.scale(marioImage.getWidth()-30, marioImage.getHeight()-30);
+        marioImage.scale(marioImage.getWidth()-50, marioImage.getHeight()-50);
         setImage(marioImage);
     }
     

@@ -6,7 +6,7 @@ public class BackGround1 extends World
 {
     // Gets resolution of current display
     public static Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize(); 
-    public static int width = (int)(screenSize.getWidth()-500); 
+    public static int width = (int)(screenSize.getWidth()-300); 
     public static int height = (int)(screenSize.getHeight()/1.25);
     
     private static int floorDist = 75;
@@ -19,17 +19,17 @@ public class BackGround1 extends World
         
         for(int i = 100; i < height; i += floorDist) {
             if((mod % 2) == 0){
-                for(int j = 0; j < width-30; j += 250) {
+                for(int j = 0; j < width-100; j += 250) {
                     addObject(new Floor(), j, i);
                 }   
             }else{
-                for(int k = width; k > 30; k -= 250) {
+                for(int k = width; k > 100; k -= 250) {
                     addObject(new Floor2(), k, i);
                 }
             }
             mod += 1;
         }
-        // Make a floor at the bottom of the screen upon which mario will be standing
+        // there is no floor between the distance of 75 then make a new floor otherwise bring the other floor down
         addObject(new Mario(), 125, (height-60));
     }
 }
