@@ -86,7 +86,7 @@ public class Mario extends Actor
         }
         if(Greenfoot.isKeyDown("down"))
         {
-            speed = 50;
+            //speed = 50;
         }
     } 
 }
