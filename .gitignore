@@ -1,4 +1,3 @@
-
 *.class
-Barrel.ctxt
-Barrel.class
+*.ctxt
+project.greenfoot
