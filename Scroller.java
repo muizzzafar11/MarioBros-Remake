@@ -27,7 +27,7 @@ public class Scroller
     private boolean limited; // flag to indicate whether scrolling is limited or not
     private int scrolledX, scrolledY; // current scrolled distances
     private int wide, high; // if limited, dimensions of scrolling area else of image to wrap
-    
+
     /**
      * This constructor is for an unlimited scrolling world;
      * If 'image' is null, the background will not change; else the given image is wrapped
@@ -46,7 +46,7 @@ public class Scroller
         }
         scroll(0, 0); // sets initial background image
     }
-    
+
     /**
      * This constructor is for a limited scrolling world;
      * If 'image' is smaller than the given total scrolling area, it will be tiled
@@ -78,7 +78,7 @@ public class Scroller
             scroll(0, 0);
         }
     }
-    
+
     /**
      * performs scrolling on 'world' by the given distances along the horizontal and vertical;
      * if 'limited' is false, requested distances are actual scrolling distances;
@@ -95,7 +95,7 @@ public class Scroller
             // calculate limits of scrolling
             //scrolledX += dsx;
             //scrolledY += dsy;
-            
+
             int maxX = wide-world.getWidth();
             int maxY = high-world.getHeight();
             // apply limits to distances to scroll
@@ -152,7 +152,7 @@ public class Scroller
             actor.setLocation(actor.getX()-dsx, actor.getY()-dsy);
         }
     }
-    
+
     /**
      * getter method for the current total scrolled distance horizontally
      *
@@ -162,7 +162,7 @@ public class Scroller
     {
         return scrolledX;
     }
-    
+
     /**
      * getter method for the current total scrolled distance vertically
      *
