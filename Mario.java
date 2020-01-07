@@ -1,10 +1,18 @@
 import greenfoot.*;
+import java.awt.Dimension;
 public class Mario extends Actor
 {
-    int speed;
-    String Marioimage = "mariopixelCopy.png";
-    long lastTime;
-    int Lives = 3;
+    private int speed;
+    private String Marioimage = "mariopixelCopy.png";
+    private long lastTime;
+    private int Lives = 3;
+    private GreenfootImage marioImage;
+    public Mario() {
+        marioImage = getImage();
+        marioImage.scale(marioImage.getWidth()-50, marioImage.getHeight()-50);
+        setImage(marioImage);
+    }
+    
     public void act() 
     {
         speed = speed + 1;
@@ -58,7 +66,7 @@ public class Mario extends Actor
             } */
             
            
-            setImage("mariopixelCopy.png");
+            setImage(marioImage);
             while(isTouching(Floor.class))
             {
                move(1);
@@ -67,18 +75,18 @@ public class Mario extends Actor
             if(Greenfoot.isKeyDown("right"))
             {
                move(5);
-               setImage("mariopixel.png");
+               setImage(marioImage);
                 while(isTouching(Floor.class))
                 {
                   move(-1);
                }
             } else{
-                setImage("mario-big.png");
+                setImage(marioImage);
             }
         }
         if(Greenfoot.isKeyDown("down"))
         {
-            speed = 50;
+            //speed = 50;
         }
     } 
 }
