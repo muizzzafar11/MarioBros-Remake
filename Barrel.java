@@ -9,11 +9,19 @@ public class Barrel extends Actor
     private GreenfootImage Barrel2 = new GreenfootImage("BarrelAni2.png");
     private GreenfootImage Barrel3 = new GreenfootImage("BarrelAni3.png");
     private GreenfootImage Barrel4 = new GreenfootImage("BarrelAni4.png");
-    
+    private int barreltoBackWide = ((BackGround1.width)-100)/20;
+    private int barreltoBackHigh = ((BackGround1.height)-100)/15;
+    Mario mario = new Mario();
      public Barrel () {
-        GreenfootImage barrelImage = getImage();
-        barrelImage.scale(barrelImage.getWidth()-20, barrelImage.getHeight()-20);
-        setImage(barrelImage);
+        Barrel1.scale(mario.getMarioWide(), mario.getMarioHigh());
+        setImage(Barrel1);
+        Barrel2.scale(mario.getMarioWide(), mario.getMarioHigh());
+        setImage(Barrel2);
+        Barrel3.scale(mario.getMarioWide(), mario.getMarioHigh());
+        setImage(Barrel3);
+        Barrel4.scale(mario.getMarioWide(), mario.getMarioHigh());
+        setImage(Barrel4);
+        
     }
     
     public void act() 

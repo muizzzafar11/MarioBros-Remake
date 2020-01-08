@@ -4,7 +4,7 @@ public class DK extends Actor
     private long lastTime;
     public DK(){
         GreenfootImage dkImage = getImage();
-        dkImage.scale(dkImage.getWidth()-30, dkImage.getHeight()-30);
+        dkImage.scale(dkImage.getWidth()-80, dkImage.getHeight()-80);
         setImage(dkImage);
     }
     public void act() 
