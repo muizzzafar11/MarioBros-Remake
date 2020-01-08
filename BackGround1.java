@@ -20,8 +20,6 @@ public class BackGround1 extends World
     {    // Scales the size of the screen
         super(width, height, 1, false);
         GreenfootImage backImage = new GreenfootImage("back.png");
-        //backHeight = backImage.getHeight();
-        //backWidth = backImage.getWidth();
         scroller = new Scroller(this, backImage, worldLength, height);
         scrollActor = new Mario();
 

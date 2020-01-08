@@ -2,9 +2,10 @@ import greenfoot.*;
 public class DK extends Actor
 {
     private long lastTime;
+    Mario mario = new Mario();
     public DK(){
         GreenfootImage dkImage = getImage();
-        dkImage.scale(dkImage.getWidth()-80, dkImage.getHeight()-80);
+        dkImage.scale(mario.getMarioWide()+50, mario.getMarioHigh()+50);
         setImage(dkImage);
     }
     public void act() 
