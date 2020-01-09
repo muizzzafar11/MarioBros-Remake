@@ -15,6 +15,7 @@ public class BackGround1 extends World
     private Actor scrollActor;
     private int worldLength = 5000;
     private int random;
+    private int score = 0; 
     //private int backHeight, backWidth;
     public BackGround1()
     {    // Scales the size of the screen
@@ -29,33 +30,15 @@ public class BackGround1 extends World
         for(int i = 0; i <= worldLength; i += 200)// This is for the basic floor 
             addObject(new Floor2(), i, height-50);
         for(int i = 0; i < worldLength; i += 1000)// This is for the secondary floor, change after += to change the distance. 
-            addObject(new Floor(), i, height/2);
-        /*super(width, height, 1); 
-        int mod = 2;
-        addObject(new DK(), 100, (int)(height/9.75));
-
-        for(int i = 100; i < height; i += floorDist) {
-        if((mod % 2) == 0){
-        for(int j = 0; j < width-100; j += 250) {
-        addObject(new Floor(), j, i);
-        }   
-        }else{
-        for(int k = width; k > 100; k -= 250) {
-        addObject(new Floor2(), k, i);
-        }
-        }
-        mod += 1;
-        }
-        // there is no floor between the distance of 75 then make a new floor otherwise bring the other floor down
-        addObject(new Mario(), 125, (height-60));*/
+            addObject(new Floor(), i, height/2);  
     }
 
     public void act() {
         scroll();
-        // to randomly generate the second floor
-        // random = Greenfoot.getRandomNumber(500);
-        // if(random == 0)
-            // addObject(new Floor(),(scrollActor.getX() + 500) , height/2);
+        random = Greenfoot.getRandomNumber(200);
+        if(random == 2) {
+            addObject(new Coins(),scrollActor.getX() + 800 ,(height/2)-20);
+        }  
     }
 
     private void scroll () {
