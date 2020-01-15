@@ -1,7 +1,12 @@
 import greenfoot.*;
 public class DK extends Actor
 {
-    long lastTime;
+    private long lastTime;
+    public DK(){
+        GreenfootImage dkImage = getImage();
+        dkImage.scale(dkImage.getWidth()-30, dkImage.getHeight()-30);
+        setImage(dkImage);
+    }
     public void act() 
     {
         if(isTouching(Mario.class))

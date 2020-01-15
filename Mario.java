@@ -13,6 +13,12 @@ public class Mario extends Actor
         marioImage.scale(marioImage.getWidth()-20, marioImage.getHeight()-20);
         setImage(marioImage);
     }
+    public Mario() {
+        marioImage = getImage();
+        marioImage.scale(marioImage.getWidth()-50, marioImage.getHeight()-50);
+        setImage(marioImage);
+    }
+    
 
     public void act() 
     {   
@@ -70,14 +76,14 @@ public class Mario extends Actor
             setImage("marioleft.png");
             lastTime = System.currentTimeMillis();
             } else {
-            if(System.currentTimeMillis() - lastTime > 500)
-            {
-            Marioimage = "mariopixelCopy.png";
-            setImage("mariopixelCopy.png");
-            lastTime = System.currentTimeMillis();
-            }
+                if(System.currentTimeMillis() - lastTime > 500)
+                {
+                    Marioimage = "mariopixelCopy.png";
+                    setImage("mariopixelCopy.png");
+                    lastTime = System.currentTimeMillis();
+                }
             } */
-
+           
             setImage(marioImage);
             while(isTouching(Floor.class))
             {
@@ -86,8 +92,8 @@ public class Mario extends Actor
         } else {
             if(Greenfoot.isKeyDown("right"))
             {
-                move(5);
-                setImage(marioImage);
+               move(5);
+               setImage(marioImage);
                 while(isTouching(Floor.class))
                 {
                     move(-1);

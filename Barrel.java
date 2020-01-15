@@ -1,12 +1,7 @@
 import greenfoot.*;
 
-/**
- * Write a description of class Barrel here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
 public class Barrel extends Actor
+
 {   
     private int frames = 1;
     private int animationCounter = 0;
@@ -15,10 +10,16 @@ public class Barrel extends Actor
     private GreenfootImage Barrel3 = new GreenfootImage("BarrelAni3.png");
     private GreenfootImage Barrel4 = new GreenfootImage("BarrelAni4.png");
     
+     public Barrel () {
+        GreenfootImage barrelImage = getImage();
+        barrelImage.scale(barrelImage.getWidth()-20, barrelImage.getHeight()-20);
+        setImage(barrelImage);
+    }
+    
     public void act() 
     {   animationCounter++;
         
-        if(isAtEdge())
+        if(getX() <= 0)
         {
             getWorld().removeObject(this);
         } else{
@@ -37,6 +38,7 @@ public class Barrel extends Actor
             
           }
        }
+
     }
     public void Animation(){
         if(frames == 1){

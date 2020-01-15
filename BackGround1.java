@@ -8,7 +8,7 @@ public class BackGround1 extends World
     public static Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize(); 
     public static int width = (int)(screenSize.getWidth()-300); 
     public static int height = (int)(screenSize.getHeight()/1.25);
-    
+
     //private static int floorDist = 75;
     private Scroller scroller;
     private Actor scrollActor;
@@ -29,6 +29,7 @@ public class BackGround1 extends World
         addObject(new DK(), 4500 , (height-60));
         addObject(new Goomba(), 450 , (height-54));
         addObject(new Turtle(), 3250 , (height-54));
+
         for(int i = 0; i <= worldLength; i += 200)// This is for the basic floor 
             addObject(new Floor2(), i, height-20);
         for(int i = 0; i < worldLength; i += 1000)// This is for the secondary floor, change after += to change the distance. 
