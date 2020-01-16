@@ -7,18 +7,25 @@ public class Mario extends Actor
     private long lastTime;
     private int Lives = 3;
     private GreenfootImage marioImage;
-    
+     private int MariotoBackWide = ((BackGround1.width)-100)/20;
+    private int MariotoBackHigh = ((BackGround1.height)-100)/10;
+     public int marioWidth, marioHeight;
+     
     public Mario() {
         marioImage = getImage();
-        marioImage.scale(marioImage.getWidth()-20, marioImage.getHeight()-20);
-        setImage(marioImage);
-    }
-    public Mario() {
-        marioImage = getImage();
-        marioImage.scale(marioImage.getWidth()-50, marioImage.getHeight()-50);
+        marioWidth = marioImage.getWidth()-MariotoBackWide;
+        marioHeight = marioImage.getHeight()-MariotoBackHigh;
+        marioImage.scale(marioWidth,marioHeight);
         setImage(marioImage);
     }
     
+     public int getMarioWide(){
+    return marioWidth;
+    }
+    
+    public int getMarioHigh(){
+    return marioHeight;
+    }
 
     public void act() 
     {   
