@@ -9,9 +9,9 @@ import greenfoot.*;
 public class Floor extends Actor
 {
     public Floor() {
-        GreenfootImage floorImage = getImage();
-        floorImage.scale(floorImage.getWidth(), floorImage.getHeight()-20);
-        setImage(floorImage);
+        // GreenfootImage floorImage = getImage();
+        // floorImage.scale(floorImage.getWidth(), floorImage.getHeight()-20);
+        // setImage(floorImage);
     }
     
     public void act() 
