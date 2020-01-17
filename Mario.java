@@ -1,36 +1,54 @@
 import greenfoot.*;
 import java.awt.Dimension;
+import java.awt.Toolkit;
+
 public class Mario extends Actor
 {
     private int speed;
     private String Marioimage = "mariopixelCopy.png";
     private long lastTime;
-    private int Lives = 3;
+    private int Lives = 1000;
     private GreenfootImage marioImage;
+    public static Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize(); 
+    public static int height = (int)(screenSize.getHeight()/1.25);
     
     public Mario() {
         marioImage = getImage();
         marioImage.scale(marioImage.getWidth()-20, marioImage.getHeight()-20);
         setImage(marioImage);
     }
+
     public void act() 
     {   
         speed = speed + 1;
         setLocation( getX(), getY() + speed);
         getWorld().showText("Lives : "+ Lives +"",1450, 50);
+        
+        if(isTouching(Rocks.class)){
+            setLocation(2, height - 54);
+            Lives = Lives - 1;
+        }
+        
+        if(isTouching(Sun.class)){
+            setLocation(2, height - 54);
+            Lives = Lives - 1;
+        }
+        
         if(isTouching(Goomba.class))
         {   
-            removeTouching(Goomba.class); 
+            setLocation(2, height - 54);
+          
             Lives = Lives - 1;
         }
 
         if(isTouching(Turtle.class))
-        {   removeTouching(Turtle.class);
+        {  
             Lives = Lives - 1;
         }
 
         if(isTouching(Barrel.class))
-        {
+        {   
+            setLocation(2, height - 54);
             removeTouching(Barrel.class);
             Lives = Lives - 1;
         }
@@ -69,14 +87,14 @@ public class Mario extends Actor
             setImage("marioleft.png");
             lastTime = System.currentTimeMillis();
             } else {
-                if(System.currentTimeMillis() - lastTime > 500)
-                {
-                    Marioimage = "mariopixelCopy.png";
-                    setImage("mariopixelCopy.png");
-                    lastTime = System.currentTimeMillis();
-                }
+            if(System.currentTimeMillis() - lastTime > 500)
+            {
+            Marioimage = "mariopixelCopy.png";
+            setImage("mariopixelCopy.png");
+            lastTime = System.currentTimeMillis();
+            }
             } */
-           
+
             setImage(marioImage);
             while(isTouching(Floor.class))
             {
@@ -85,8 +103,8 @@ public class Mario extends Actor
         } else {
             if(Greenfoot.isKeyDown("right"))
             {
-               move(5);
-               setImage(marioImage);
+                move(5);
+                setImage(marioImage);
                 while(isTouching(Floor.class))
                 {
                     move(-1);

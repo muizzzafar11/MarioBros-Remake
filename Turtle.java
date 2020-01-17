@@ -5,11 +5,11 @@ public class Turtle extends Actor
     private int movingDirection = -1;
     private int frames = 1;
     private int animationCounter = 0;
-
-    private GreenfootImage Turtle1 = new GreenfootImage("Turtle2.png");
-    private GreenfootImage Turtle2 = new GreenfootImage("Turtle3.png");
-    private GreenfootImage Turtle3 = new GreenfootImage("Turtle4.png");
-    private GreenfootImage Turtle4 = new GreenfootImage("Turtle5.png");
+    
+    private GreenfootImage Turtle [] = {new GreenfootImage("Turtle2.png"),
+    new GreenfootImage("Turtle3.png"),new GreenfootImage("Turtle4.png"),
+    new GreenfootImage("Turtle5.png")};
+    
     public void act() 
     {   animationCounter++;
         if(getX() <= 0)
@@ -34,8 +34,6 @@ public class Turtle extends Actor
             {   
                 movingDirection = -1;
             }
-
-        
             setLocation(getX(), getY() + 1);
             while(isTouching(Floor2.class))
             { 
@@ -53,11 +51,11 @@ public class Turtle extends Actor
 
     public void Animation(){
         if(frames == 1){
-            setImage(Turtle1);
+            setImage(Turtle[0]);
         }
 
         if(frames == 2){
-            setImage(Turtle2);
+            setImage(Turtle[1]);
             frames = 1;
             return;
         }
@@ -67,11 +65,11 @@ public class Turtle extends Actor
 
     public void Animation2(){
         if(frames == 1){
-            setImage(Turtle3);
+            setImage(Turtle[2]);
         }
 
         if(frames == 2){
-            setImage(Turtle4);
+            setImage(Turtle[3]);
             frames = 1;
             return;
         }

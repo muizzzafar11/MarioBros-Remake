@@ -27,14 +27,26 @@ public class BackGround1 extends World
         // Adding actor
         addObject(scrollActor, 20, (height-60));
         addObject(new DK(), 4500 , (height-60));
-        addObject(new Goomba(), 450 , (height-54));
-        addObject(new Turtle(), 3250 , (height-54));
-
+        
+        for(int i = 0; i < 3; i++){      
+        addObject(new Goomba(), width + (Greenfoot.getRandomNumber(2000)), (height-54));
+        }
+        for(int i = 0; i < 3; i++){      
+        addObject(new Turtle(), width + (Greenfoot.getRandomNumber(2000)), (height-54));
+        }
+        //addObject(new Turtle(), 3250 , (height-54));
+        addObject(new Rocks(), 300 , (height-780));
+        addObject(new Rocks(), 500 , (height-780));
+        addObject(new Rocks(), 700 , (height-780));
+        addObject(new Rocks(), 1500 , (height-780));
         for(int i = 0; i <= worldLength; i += 200)// This is for the basic floor 
             addObject(new Floor2(), i, height-20);
         for(int i = 0; i < worldLength; i += 1000)// This is for the secondary floor, change after += to change the distance. 
             addObject(new Floor(), i, height/2);
-        
+        for(int i = 0; i < 3; i++){
+            addObject(new Sun(), width + (Greenfoot.getRandomNumber(2000)) , (Greenfoot.getRandomNumber(height)));
+        }
+        //addObject(new Sun(), 900 , (height-600));
         /*super(width, height, 1); 
         int mod = 2;
         addObject(new DK(), 100, (int)(height/9.75));
@@ -60,7 +72,7 @@ public class BackGround1 extends World
         // to randomly generate the second floor
         // random = Greenfoot.getRandomNumber(500);
         // if(random == 0)
-            // addObject(new Floor(),(scrollActor.getX() + 500) , height/2);
+        // addObject(new Floor(),(scrollActor.getX() + 500) , height/2);
     }
 
     private void scroll () {

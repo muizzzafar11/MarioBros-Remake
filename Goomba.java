@@ -4,11 +4,10 @@ public class Goomba extends Actor
 {   private int movingDirection = -1;
     private int frames = 1;
     private int animationCounter = 0;
-
-    private GreenfootImage Goomba1 = new GreenfootImage("Enemies0.png");
-    private GreenfootImage Goomba2 = new GreenfootImage("Enemies1.png");
-    private GreenfootImage Goomba3 = new GreenfootImage("Enemies2.png");
-    private GreenfootImage Goomba4 = new GreenfootImage("Enemies3.png");
+    
+    private GreenfootImage Goomba [] = {new GreenfootImage("Enemies0.png"),
+    new GreenfootImage("Enemies1.png"),new GreenfootImage("Enemies2.png"),
+    new GreenfootImage("Enemies3.png")};
 
     public void act() 
     {   
@@ -53,11 +52,11 @@ public class Goomba extends Actor
 
     public void Animation(){
         if(frames == 1){
-            setImage(Goomba1);
+            setImage(Goomba[0]);
         }
 
         if(frames == 2){
-            setImage(Goomba2);
+            setImage(Goomba[1]);
             frames = 1;
             return;
         }
@@ -65,17 +64,16 @@ public class Goomba extends Actor
         frames ++;
     }
 
-    public void Animation2(){
+    public void Animation2(){        
         if(frames == 1){
-            setImage(Goomba3);
+            setImage(Goomba[2]);
         }
 
         if(frames == 2){
-            setImage(Goomba4);
+            setImage(Goomba[3]);
             frames = 1;
             return;
         }
-
         frames ++;
     }
 }
