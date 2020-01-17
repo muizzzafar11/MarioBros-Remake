@@ -4,10 +4,11 @@ import java.awt.Dimension;
 
 public class BackGround1 extends World
 {
+    // TODO: set all of the standards according to the height of the screen
     // Gets resolution of current display
     public static Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize(); 
-    public static int width = (int)(screenSize.getWidth()-300); 
-    public static int height = (int)(screenSize.getHeight()/1.25);
+    public static int width = (int)(screenSize.getWidth()-200); 
+    public static int height = (int)(screenSize.getHeight()/1.4);
 
     //private static int floorDist = 75;
     private Scroller scroller;
@@ -18,9 +19,7 @@ public class BackGround1 extends World
     public BackGround1()
     {    // Scales the size of the screen
         super(width, height, 1, false);
-        GreenfootImage backImage = new GreenfootImage("board.jpg");
-        //backHeight = backImage.getHeight();
-        //backWidth = backImage.getWidth();
+        GreenfootImage backImage = new GreenfootImage("back.png");
         scroller = new Scroller(this, backImage, worldLength, height);
         scrollActor = new Mario();
 
