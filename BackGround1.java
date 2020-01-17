@@ -39,7 +39,9 @@ public class BackGround1 extends World
         addObject(new Floor2(), 875, 1000);
         addObject(new Floor2(), 1125, 1000);
         addObject(new Floor2(), 1375, 1000);
-        addObject(new Run("mario/run_right/mario_",0,3,"right", 1), 500, 400);
+        //addObject(new Run("mario/run_left/smw_",3,4,"left", -1, 0), 500, 400);
+        addObject(new Run("mario/run_right/smw_",0,1,"right", 1, 0), 500, 400);
+
     }
     
    
