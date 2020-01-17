@@ -13,13 +13,6 @@ public class Mario extends Actor
         marioImage.scale(marioImage.getWidth()-20, marioImage.getHeight()-20);
         setImage(marioImage);
     }
-    public Mario() {
-        marioImage = getImage();
-        marioImage.scale(marioImage.getWidth()-50, marioImage.getHeight()-50);
-        setImage(marioImage);
-    }
-    
-
     public void act() 
     {   
         speed = speed + 1;
