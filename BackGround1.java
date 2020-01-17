@@ -30,10 +30,10 @@ public class BackGround1 extends World
         addObject(new Goomba(), 450 , (height-54));
         addObject(new Turtle(), 3250 , (height-54));
 
-        for(int i = 0; i <= worldLength; i += 200)// This is for the basic floor 
-            addObject(new Floor2(), i, height-20);
-        // for(int i = 0; i < worldLength; i += 1000)// This is for the secondary floor, change after += to change the distance. 
-            // addObject(new Floor(), i, height/2);
+        // for(int i = 0; i <= worldLength; i += 200)// This is for the basic floor 
+            // addObject(new Floor2(), i, height-20);
+        for(int i = 0; i <= worldLength; i += 200)// This is for the secondary floor, change after += to change the distance. 
+            addObject(new Floor(), i, height-20);
         
         /*super(width, height, 1); 
         int mod = 2;

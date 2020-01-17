@@ -37,16 +37,16 @@ public class Turtle extends Actor
 
         
             setLocation(getX(), getY() + 1);
-            while(isTouching(Floor2.class))
+            while(isTouching(Floor.class))
             { 
                 setLocation(getX() + (movingDirection), getY() - 1);
 
             }
-            while(isTouching(Floor.class))
-            {
-                setLocation(getX() - (movingDirection), getY() - 1);
+            // while(isTouching(Floor.class))
+            // {
+                // setLocation(getX() - (movingDirection), getY() - 1);
 
-            }
+            // }
 
         }
     } 
