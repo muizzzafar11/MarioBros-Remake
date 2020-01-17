@@ -24,12 +24,16 @@ public class BackGround1 extends World
         scrollActor = new Mario();
 
         // Adding actor
-        addObject(scrollActor, 20, (height-120));
-        addObject(new DK(), 4500 , (height-120));
-        for(int i = 0; i <= worldLength; i += 200)// This is for the basic floor 
-            addObject(new Floor2(), i, height-50);
-        for(int i = 0; i < worldLength; i += 1000)// This is for the secondary floor, change after += to change the distance. 
-            addObject(new Floor(), i, height/2);
+        addObject(scrollActor, 20, (height-60));
+        addObject(new DK(), 4500 , (height-60));
+        addObject(new Goomba(), 450 , (height-54));
+        addObject(new Turtle(), 3250 , (height-54));
+
+        // for(int i = 0; i <= worldLength; i += 200)// This is for the basic floor 
+            // addObject(new Floor2(), i, height-20);
+        for(int i = 0; i <= worldLength; i += 200)// This is for the secondary floor, change after += to change the distance. 
+            addObject(new Floor(), i, height-20);
+        
         /*super(width, height, 1); 
         int mod = 2;
         addObject(new DK(), 100, (int)(height/9.75));
