@@ -1,4 +1,3 @@
-
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
@@ -7,7 +6,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Run extends Mario
+public class Run extends PreciseMario
 {
     /**
      * Act - do whatever the Run wants to do. This method is called whenever
@@ -15,69 +14,138 @@ public class Run extends Mario
      */
     GreenfootImage[] img;
     int frameCounter = 0, frame =0; //manages sprites and animation speed 
-    int animationSpeed = 8;
-    String key = "";
-    int px, py, vx, vy; 
+    int animationSpeed = 6;
     String ext = ".png";
-    int speed;
+   
     
-    public Run(String folder, int firstFile, int lastFile, String key, int movementSpeed){
-        super(key);
+    public Run(String folder, int firstFile, int lastFile, String key,double vx,double vy){
+        super(key, vx, vy);
         img = new GreenfootImage[(lastFile-firstFile)+1];
         for(int i = 0; i < img.length; i++){
             img[i] = new GreenfootImage(folder + (firstFile+i) + ext);
         }
         setImage(img[0]);
-        this.speed  = movementSpeed;
-        vx = 0; 
-        vy = 5;
+        
     }
     
     public void act() 
     {
-        //UPDATE
-            //Player position
-            px += vx;
-            py += vy;
+        
             //Animation frame
             frameCounter++;
-            if(frameCounter % animationSpeed == 0){ 
+            if(frameCounter % animationSpeed == 0){ //increments frame drawn
                 frameCounter = 0;
                 frame++;
-                if(frame > img.length-1){ 
+                if(frame > img.length-1){  //resets frame drawn to first one
                     frame = 0;
                 }
             }
             
-        
+            
         
         //CHECK
             //Floor hitdetect
-            if(super.floorHitDetection() != null){ 
+            
+            /*
+             * if(floorHitDetection() != null){ 
                 Actor obj = super.floorHitDetection();
                // System.out.println(getY() + " + " + getImage().getHeight()/2 + "-" + obj.getY() + "-" + obj.getImage().getHeight()/2);
-                int difference = (getY()+getImage().getHeight()/2) - (obj.getY() - obj.getImage().getHeight()/2);
-                System.out.println((getX() + getImage().getWidth()/2) + " " + (obj.getX() - obj.getImage().getWidth()/2) );
-                py -= difference;
+                double difference = ObjectYOffset(obj);
+                //System.out.println(difference);
+                py -= difference; 
                 py -= vy;
             }
-            //System.out.println(getImage().getHeight());
-            
+            */
+           //if(Math.abs(vx) > 4){
+           //    accx = 0;
+           // }
+           System.out.println(Greenfoot.isKeyDown(key) + " " + key);
+           if(!Greenfoot.isKeyDown(key)){
+               accx = 0;
+               
+               frame= 0;
+               
+               if(originalvx > 0 && vx < 0){
+                decx = 0;
+                vx = 0.001;
+                } else if(originalvx < 0 && vx > 0){
+                decx = 0;
+                vx = 0.001;
+                } else{
+                  decx = originaldecx;
+                  stopAccelerating();
+                }
+                
+                
+                //System.out.println(vx);
+               //ax = 0.8;
+           } else {
+               //vx = originalvx;
+               if(Math.abs(vx) > Math.abs(terminalvx)){
+                   accx = 0;
+               } else {
+               accx = originalaccx;
+                
+               }
+               startAccelerating();
+               
+            }
+                      updatePos();
+
+           
+           
+           if(isTouching(Floor.class)){
+               Actor obj = floorHitDetection();
+               if(obj != null){
+                   vy = 0;
+                   double diff = 0;
+                   diff = ObjectYOffset(obj);
+                   setLocation(getX(), getY()-diff);
+               }
+           }
+           
+           draw(frame);
+           
+           if(otherKeyPressed()){
+               getWorld().removeObject(this);
+           }
+           /*
+            if(isTouching(Floor.class)){
+                
+                System.out.println(getY());
+            //super.gravity = 0;
+                //setLocation(getX(), getY()-(vy));
+                Actor obj = floorHitDetection();
+                double diff = 0;
+                if(obj != null){
+                    diff = ObjectYOffset(obj);
+                }
+                                setLocation(getX(), getY()-diff);
+
+                //System.out.println("new " +getY());
+            } else{
+                           //setLocation(getX() + vx, getY() +vy); 
+
+            }
         //DRAW
             //draws sprites
-            if(super.otherKeyPressed(px, py)){ 
+            if(otherKeyPressed()){ 
                 getWorld().removeObject(this);
-            } else if(Greenfoot.isKeyDown(super.key)){
+            } else if(Greenfoot.isKeyDown(key)){
                 draw(frame);
-                vx = speed;
+                changeVel(originalvx, originalvy);
             } else {
                 draw(0);
-                vx = 0;
+                
+                changeVel(0, 0);
+                
                 frame = 0;
             }  
-            setLocation(px, py);
-           // System.out.println(getY());
-        
+            //System.out.println(getExactX() + " " + getExactY());
+            //setLocation(px, py);
+            
+            //System.out.println(getExactX() + " " + getExactY());
+            */
     }  
     
     public void draw(int frame){
@@ -89,8 +157,9 @@ public class Run extends Mario
         this.px = getX(); 
         this.py = getY();
         for(int i = 0; i < img.length; i++){
-            img[i].scale(getWorld().getHeight()/10, getWorld().getHeight()/10);
+            img[i].scale(getWorld().getHeight()/15, getWorld().getHeight()/15);
 
         }
     }
+ 
 }
