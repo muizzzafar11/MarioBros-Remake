@@ -16,7 +16,8 @@ public class BackGround1 extends World
     private int worldLength = 5000;
     private int random;
     //private int backHeight, backWidth;
-    public BackGround1() {    // Scales the size of the screen
+    public BackGround1()
+    {    // Scales the size of the screen
         super(width, height, 1, false);
         GreenfootImage backImage = new GreenfootImage("back.png");
         scroller = new Scroller(this, backImage, worldLength, height);
@@ -24,15 +25,41 @@ public class BackGround1 extends World
 
         // Adding actor
         addObject(scrollActor, 20, (height-60));
-        addObject(new DK(), 4500 , (height-100));
+        addObject(new DK(), 4500 , (height-60));
         addObject(new Goomba(), 450 , (height-54));
         addObject(new Turtle(), 3250 , (height-54));
+
+        // for(int i = 0; i <= worldLength; i += 200)// This is for the basic floor 
+            // addObject(new Floor2(), i, height-20);
         for(int i = 0; i <= worldLength; i += 200)// This is for the secondary floor, change after += to change the distance. 
-            addObject(new Floor(), i, height-50);
+            addObject(new Floor(), i, height-20);
+        
+        /*super(width, height, 1); 
+        int mod = 2;
+        addObject(new DK(), 100, (int)(height/9.75));
+
+        for(int i = 100; i < height; i += floorDist) {
+        if((mod % 2) == 0){
+        for(int j = 0; j < width-100; j += 250) {
+        addObject(new Floor(), j, i);
+        }   
+        }else{
+        for(int k = width; k > 100; k -= 250) {
+        addObject(new Floor2(), k, i);
+        }
+        }
+        mod += 1;
+        }
+        // there is no floor between the distance of 75 then make a new floor otherwise bring the other floor down
+        addObject(new Mario(), 125, (height-60));*/
     }
 
     public void act() {
         scroll();
+        // to randomly generate the second floor
+        // random = Greenfoot.getRandomNumber(500);
+        // if(random == 0)
+            // addObject(new Floor(),(scrollActor.getX() + 500) , height/2);
     }
 
     private void scroll () {

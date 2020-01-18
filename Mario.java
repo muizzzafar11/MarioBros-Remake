@@ -11,13 +11,15 @@ public class Mario extends Actor
     private int MariotoBackHigh = ((BackGround1.height)-100)/10;
     public int marioWidth, marioHeight;
     public Mario() {
+        // System.out.println(MariotoBackWide);
+        // System.out.println(MariotoBackHigh);
         marioImage = getImage();
         marioWidth = marioImage.getWidth()-MariotoBackWide;
         marioHeight = marioImage.getHeight()-MariotoBackHigh;
         marioImage.scale(marioWidth,marioHeight);
         setImage(marioImage);
     }
-  
+    
 
     public int getMarioWide(){
     return marioWidth;
@@ -76,6 +78,20 @@ public class Mario extends Actor
         if(Greenfoot.isKeyDown("left"))
         {
             move(-5);
+            /*if(System.currentTimeMillis() - lastTime > 500 && Marioimage.equals("mariopixelCopy.png"))
+            {
+            Marioimage = "marioleft.png";
+            setImage("marioleft.png");
+            lastTime = System.currentTimeMillis();
+            } else {
+                if(System.currentTimeMillis() - lastTime > 500)
+                {
+                    Marioimage = "mariopixelCopy.png";
+                    setImage("mariopixelCopy.png");
+                    lastTime = System.currentTimeMillis();
+                }
+            } */
+           
             setImage(marioImage);
             while(isTouching(Floor.class))
             {
@@ -93,6 +109,10 @@ public class Mario extends Actor
             } else{
                 setImage(marioImage);
             }
+        }
+        if(Greenfoot.isKeyDown("down"))
+        {
+            //speed = 50;
         }
 
     }
