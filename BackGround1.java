@@ -27,6 +27,7 @@ public class BackGround1 extends World
         addObject(new DK(), 4500 , (height-100));
         addObject(new Goomba(), 450 , (height-54));
         addObject(new Turtle(), 3250 , (height-54));
+        addObject(new itembox("images/itembox/item_", 0, 4), 500 , (height-200));
         for(int i = 0; i <= worldLength; i += 200)// This is for the secondary floor, change after += to change the distance. 
             addObject(new Floor(), i, height-50);
     }
