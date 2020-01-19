@@ -12,7 +12,7 @@ public abstract class PreciseMario extends SmoothMover
      * Act - do whatever the PreciseMario wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-    public double gravity = 2.5;
+    public double gravity = 2.0;
     protected double originalvx, originalvy, originalaccx, originaldecx;
     protected double px, py, vx, vy, terminalvx;
     protected double accx;
@@ -31,10 +31,10 @@ public abstract class PreciseMario extends SmoothMover
        originalvy = vy;
        this.vx = vx;
        this.vy = vy;
-       if(key.equals("left")){
+       if(originalvx < 0){
            decx = 0.5;
            accx = -0.1;
-       } else {
+       }else if(originalvx > 0) {
            decx = -0.5;
            accx = 0.1;
        }
@@ -50,7 +50,7 @@ public abstract class PreciseMario extends SmoothMover
         
         //System.out.println(gravity);
         vy = vy + gravity;
-        System.out.println(vx);
+        //System.out.println(vx);
         //System.out.println(vy);
         
     }
@@ -80,19 +80,22 @@ public abstract class PreciseMario extends SmoothMover
     public double ObjectYOffset(Actor obj){
         double topYdiff = (getY()+getImage().getHeight()/2) - (obj.getY() - obj.getImage().getHeight()/2);
         double bottomYdiff = (getY()-getImage().getHeight()/2) - (obj.getY() + obj.getImage().getHeight()/2);
-        /*
+        
         if(Math.abs(topYdiff) < Math.abs(bottomYdiff)){
             return topYdiff;
         } else {
             return bottomYdiff;
         }
-        */
-       return topYdiff;
+        
+       
+        
+       //return topYdiff;
     }
     
     public double ObjectXOffset(Actor obj){
         double rightXdiff = (getX()+getImage().getWidth()/2) - (obj.getX() - obj.getImage().getWidth()/2);
         double leftXdiff = (getX()-getImage().getWidth()/2) - (obj.getX() + obj.getImage().getWidth()/2);
+        
         if(Math.abs(rightXdiff) < Math.abs(leftXdiff)){
             return rightXdiff;
         } else {
@@ -142,7 +145,7 @@ public abstract class PreciseMario extends SmoothMover
             
                 case 0:
                     if(Greenfoot.isKeyDown("up")){
-                        getWorld().addObject(new Jump("mario/jump_left/smw_",10, 11, "up", -3, -30), (int)getX(), (int)getY());
+                        getWorld().addObject(new Jump("mario/jump_left/smw_",10, 11, "up", -3, -30, -1), (int)getX(), (int)getY());
 
                     } else {
                     getWorld().addObject(new Run("mario/run_left/smw_",3, 4, "left", -1, 0), (int)getX(), (int)getY());
@@ -151,7 +154,7 @@ public abstract class PreciseMario extends SmoothMover
                     break;
                 case 1:
                     if(Greenfoot.isKeyDown("up")){
-                        getWorld().addObject(new Jump("mario/jump_right/smw_",10, 11, "up", 3, -30), (int)getX(), (int)getY());
+                        getWorld().addObject(new Jump("mario/jump_right/smw_",10, 11, "up", 3, -30, 1), (int)getX(), (int)getY());
 
                     } else {
                     getWorld().addObject(new Run("mario/run_right/smw_", 0, 1, "right", 1, 0), (int)getX(), (int)getY());
@@ -164,18 +167,18 @@ public abstract class PreciseMario extends SmoothMover
                         if(Greenfoot.isKeyDown("right")){
                             newVx = 3;
                         }else{
-                            newVx = 0.01;
+                            newVx = 0.0;
                         }
-                        getWorld().addObject(new Jump("mario/jump_right/smw_",10, 11, "up", newVx, -30), (int)getX(), (int)getY());
+                        getWorld().addObject(new Jump("mario/jump_right/smw_",10, 11, "up", newVx, -30, 1), (int)getX(), (int)getY());
                         
                     } else {
                         double newVx;
                         if(Greenfoot.isKeyDown("left")){
                             newVx = -3;
                         }else{
-                            newVx = -0.01;
+                            newVx = 0.0;
                         }
-                        getWorld().addObject(new Jump("mario/jump_left/smw_",10, 11, "up", newVx, -30), (int)getX(), (int)getY());
+                        getWorld().addObject(new Jump("mario/jump_left/smw_",10, 11, "up", newVx, -30, -1), (int)getX(), (int)getY());
                         
                     }
                 
