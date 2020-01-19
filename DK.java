@@ -4,7 +4,7 @@ public class DK extends Actor
     long lastTime;
     public void act() 
     {
-        if(isTouching(Mario.class))
+        if(isTouching(PreciseMario.class))
         {
             Greenfoot.setWorld(new Finish());
 
