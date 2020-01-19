@@ -12,7 +12,7 @@ public class DK extends Actor
     {
         if(isTouching(Mario.class))
         {
-            Greenfoot.setWorld(new Finish());
+            //Greenfoot.setWorld(new Finish());
 
             Greenfoot.stop();
         }
