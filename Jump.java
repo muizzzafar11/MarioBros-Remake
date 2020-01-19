@@ -13,14 +13,17 @@ public class Jump extends PreciseMario
     int animationSpeed = 8;
     String ext = ".png";
     double terminalVel = 3;
+    int direction = 0;
     
-    public Jump(String folder, int firstFile, int lastFile, String key, double vx, double vy){
+    
+    public Jump(String folder, int firstFile, int lastFile, String key, double vx, double vy,int direction){
         super(key, vx, vy);
         img = new GreenfootImage[(lastFile-firstFile)+1];
         for(int i = 0; i < img.length; i++){
             img[i] = new GreenfootImage(folder + (firstFile+i) + ext);
         }
         setImage(img[0]);
+        this.direction = direction;
        
     }
     
@@ -29,21 +32,29 @@ public class Jump extends PreciseMario
         
         //Animation frame
             
+               if(Math.abs(vx) > Math.abs(terminalvx)){
+                   accx = 0;
+               } else {
+                   accx = originalaccx;
+                
+               }
+               startAccelerating();
+               //System.out.println(vx + " " + accx);
+               if(Math.abs(vx) > Math.abs(terminalvx)){
+                   accx = 0;
+               } else {
+               accx = originalaccx;
+                
+               }
+               startAccelerating();
+               
+           /* 
             if(!Greenfoot.isKeyDown(key)){
                accx = 0;
                
                frame= 0;
                
-               if(originalvx > 0 && vx < 0){
-                decx = 0;
-                vx = 0.001;
-                } else if(originalvx < 0 && vx > 0){
-                decx = 0;
-                vx = 0.001;
-                } else{
-                  decx = originaldecx;
-                  stopAccelerating();
-                }
+               
            } else {
                 if(Math.abs(vx) > Math.abs(terminalvx)){
                    accx = 0;
@@ -55,30 +66,37 @@ public class Jump extends PreciseMario
                
                
            }
+           */
            updatePos();
+           draw(frame);
+           if(vy > 0){
+               frame = 1;
+           }
            if(isTouching(Floor.class)){
-           
+               System.out.println("hit");
+               Actor obj = floorHitDetection();
+               if(obj != null){
+                   vy = 0;
+                   double diff = 0;
+                   diff = ObjectYOffset(obj);
+                   System.out.println("diff");
+                   setLocation(getX(), getY()-diff);
+               }
+               //vy = 1;
                if(otherKeyPressed()){
                    getWorld().removeObject(this);
                } else {
-                  if(originalvx > 0.0){
+                  if(direction > 0){
                     getWorld().addObject(new Run("mario/run_right/smw_", 0, 1, "right", 1, 0), (int)getX(), (int)getY());
                   } else{
+                      System.out.println("ge");
                       getWorld().addObject(new Run("mario/run_left/smw_",3, 4, "left", -1, 0), (int)getX(), (int)getY());
   
                   }
                   getWorld().removeObject(this);
                }
            }
-        if(isTouching(Floor.class)){
-               Actor obj = floorHitDetection();
-               if(obj != null){
-                   vy = 0;
-                   double diff = 0;
-                   diff = ObjectYOffset(obj);
-                   setLocation(getX(), getY()-diff);
-               }
-           }
+        
         
         
         
