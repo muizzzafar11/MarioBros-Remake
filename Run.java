@@ -59,7 +59,7 @@ public class Run extends PreciseMario
            //if(Math.abs(vx) > 4){
            //    accx = 0;
            // }
-           System.out.println(Greenfoot.isKeyDown(key) + " " + key);
+           //System.out.println(Greenfoot.isKeyDown(key) + " " + key);
            if(!Greenfoot.isKeyDown(key)){
                accx = 0;
                
@@ -81,8 +81,9 @@ public class Run extends PreciseMario
                //ax = 0.8;
            } else {
                //vx = originalvx;
-               if(Math.abs(vx) > Math.abs(terminalvx)){
+               if(Math.abs(vx) >= Math.abs(terminalvx)){
                    accx = 0;
+                   System.out.println("termvx reached");
                } else {
                accx = originalaccx;
                 
