@@ -7,8 +7,8 @@ public class BackGround1 extends World
     // TODO: set all of the standards according to the height of the screen
     // Gets resolution of current display
     public static Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize(); 
-    public static int width = (int)(screenSize.getWidth()-200); 
-    public static int height = (int)(screenSize.getHeight()/1.4);
+    public static int width = (int)(screenSize.getWidth()/1.5); 
+    public static int height = (int)(screenSize.getHeight()/1.25);
 
     //private static int floorDist = 75;
     private Scroller scroller;
