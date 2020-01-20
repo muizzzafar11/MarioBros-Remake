@@ -24,5 +24,10 @@ public class Mountains2 extends Mountains
     public void act() 
     {
         // Add your action code here.
-    }    
+    }
+    
+    public void hitdetect(int px, int py){
+    
+    }
+    
 }

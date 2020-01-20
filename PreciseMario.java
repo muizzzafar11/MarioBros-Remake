@@ -1,3 +1,7 @@
+//Taha M
+//ICS4U1
+//Summative
+
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.List;
 /**
@@ -17,15 +21,14 @@ public class PreciseMario extends SmoothMover
     protected double vx, vy, terminalvx;
     protected double accx;
     protected double decx;
-    protected int stage = 1;
-    public static int Lives = 3;
-    //static int Lives = 3;
-    int height, width;
+    protected int stage = 2; //stage = 1 means small mario sprites will load while 2 loads bigs ones
+    public static int Lives = 3; 
+   
     
     String key = "";
     String[] possibleKeys = {"left", "right", "up"};
     String ext = ".png";
-    String extrafileletter = "";
+    String extrafileletter = ""; //added to the path of which greenfoot image create
     
     public PreciseMario(String key, double vx, double vy){
        this.key = key;
@@ -33,23 +36,20 @@ public class PreciseMario extends SmoothMover
        originalvy = vy;
        this.vx = vx;
        this.vy = vy;
-       if(originalvx < 0){ //if mario is facing left
+       if(originalvx < 0){ //changes variables if mario is facing left
            decx = 0.5;
            accx = -0.1;
        }else if(originalvx > 0) { //if  mario is facing right
            decx = -0.5;
            accx = 0.1;
        }
-       originalaccx = accx;
-       originaldecx = decx;
+       originalaccx = accx; //to keep track of accx if its set to 0 
+       originaldecx = decx; //to keep track of decx if its set to 0 
        terminalvx = 10; //fastest mario can travel
       
     }
     
-    public PreciseMario() {
-    
-    }
-    //puts sprites in to array
+    //puts sprites into given array based on the path given
     public void setupSprites(GreenfootImage[] img, String folder, int firstFile){
         for(int i = 0; i < img.length; i++){
             img[i] = new GreenfootImage(folder + (firstFile+i) +extrafileletter + ext);
@@ -72,7 +72,7 @@ public class PreciseMario extends SmoothMover
         }
     }
     
-    public void updatePos(){
+    public void updatePos(){ //updates positon with velocity
        
         setLocation(getX()+vx, getY()+vy);
         vy = vy + gravity;
@@ -90,17 +90,12 @@ public class PreciseMario extends SmoothMover
 
     }
     
-    protected void addedToWorld(World world){
-       height = getWorld().getHeight();
-       width = getWorld().getWidth();
-       
-    }
-    
-    //finds if mario is on top or bottom 
+    //finds if mario is on top or bottom of floor
     public double ObjectYOffset(Actor obj){
         double topYdiff = (getY()+getImage().getHeight()/2) - (obj.getY() - obj.getImage().getHeight()/2);
         double bottomYdiff = (getY()-getImage().getHeight()/2) - (obj.getY() + obj.getImage().getHeight()/2);
-        
+        //smaller difference means its on that half of the floor
+        //if topYdiff is smaller than bottomYdiff then mario is clipped in the top half of the floor
         if(Math.abs(topYdiff) < Math.abs(bottomYdiff)){
             return topYdiff;
         } else {
@@ -108,6 +103,7 @@ public class PreciseMario extends SmoothMover
         }
     }
     
+    //same as objectYOffset but for the x-axis
     public double ObjectXOffset(Actor obj){
         double rightXdiff = (getX()+getImage().getWidth()/2) - (obj.getX() - obj.getImage().getWidth()/2);
         double leftXdiff = (getX()-getImage().getWidth()/2) - (obj.getX() + obj.getImage().getWidth()/2);
@@ -119,46 +115,46 @@ public class PreciseMario extends SmoothMover
         }
     }
     
-    //returns obkect if mario is touching it 
+    //returns object if mario is touching it 
     public Actor floorHitDetection(){
         Actor object  = getOneObjectAtOffset(getImage().getWidth()/2, getImage().getHeight()/2, Floor.class);
        return object;
     }
     
     
-    public boolean otherKeyPressed(){ //adds mario object if new key is pressed
+    public boolean otherKeyPressed(){ //adds new mario object if new key is pressed
        
             int index = -1;
             for(int i = 0; i < possibleKeys.length; i++){
-                if(Greenfoot.isKeyDown(possibleKeys[i]) && possibleKeys[i] != key){
+                if(Greenfoot.isKeyDown(possibleKeys[i]) && possibleKeys[i] != key){ //iterates through the arrowkeys
                     if(!(Greenfoot.isKeyDown("left") && Greenfoot.isKeyDown("right"))){ //stops mario from moving right then left constantly
-                        index = i;
+                        index = i; 
                         break;
                     }
                 }
             }
             switch(index){
             
-                case 0:
-                    if(Greenfoot.isKeyDown("up")){
+                case 0: //left key is pressed
+                    if(Greenfoot.isKeyDown("up")){ //checks if up is also pressed so it can move with an x velocity
                         getWorld().addObject(new Jump("mario/jump_left/smw_",0, 1, "up", -3, -30, -1), (int)getX(), (int)getY());
 
-                    } else {
+                    } else { //user just wants to run left
                     getWorld().addObject(new Run("mario/run_left/smw_",0, 3, "left", -1, 0), (int)getX(), (int)getY());
                     
                     }
                     break;
-                case 1:
-                    if(Greenfoot.isKeyDown("up")){
+                case 1: //right key is pressed
+                    if(Greenfoot.isKeyDown("up")){ //if up is pressed jump with positive x vel
                         getWorld().addObject(new Jump("mario/jump_right/smw_",0, 1, "up", 3, -30, 1), (int)getX(), (int)getY());
 
-                    } else {
+                    } else { //user wants to run right
                     getWorld().addObject(new Run("mario/run_right/smw_", 0, 3, "right", 1, 0), (int)getX(), (int)getY());
                     
                     }
                     break;
-                case 2: 
-                    if(originalvx > 0){
+                case 2: //jump key pressed
+                    if(originalvx > 0){ //checks current objects vx so it knows which way the jump object should face
                         double newVx;
                         if(Greenfoot.isKeyDown("right")){ //jumps up then forward
                             newVx = vx;
@@ -167,7 +163,7 @@ public class PreciseMario extends SmoothMover
                         }
                         getWorld().addObject(new Jump("mario/jump_right/smw_",0, 1, "up", newVx, -30, 1), (int)getX(), (int)getY());
                         
-                    } else {
+                    } else { //current object is facing left
                         double newVx;
                         if(Greenfoot.isKeyDown("left")){ //jumps up then backward
                             newVx = vx;
@@ -191,16 +187,6 @@ public class PreciseMario extends SmoothMover
         return false;
     }
     
-    public void act() {
-        // if(isTouching(Turtle.class)) {
-            // Lives--;
-        // }
-        // if(isTouching(Barrel.class)) {
-            // Lives--;
-        // }   
-        // if(isTouching(Goomba.class)) {
-            // Lives--;
-        // }
-    }
+    
     
 }

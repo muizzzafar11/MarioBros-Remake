@@ -1,3 +1,7 @@
+//Taha M
+//ICS4U1
+//Summative
+
 import greenfoot.*; // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
@@ -15,28 +19,26 @@ public class Run extends PreciseMario {
     int frameCounter = 0, frame = 0; // manages sprites and animation speed
     int animationSpeed = 6;
     String ext = ".png";
-    int bigMariosizx = 13, bigMariosizy = 8;
-    int smallMariosizx = 13, smallMariosizy = 12;
-    //static int Lives;
+    int bigMariosizx = 13, bigMariosizy = 8; //sizes for big sprite mario
+    int smallMariosizx = 13, smallMariosizy = 12; //sizes for scaling small sprite mario
+    
 
     public Run(String folder, int firstFile, int lastFile, String key, double vx, double vy) {
 
         super(key, vx, vy);
         BackGround1.scrollActor = this; // scroller tracks this
         img = new GreenfootImage[(lastFile - firstFile) + 1];
-        if (isMarioBig()) {
-            System.out.println("b");
-            super.extrafileletter = "b";
+        if (isMarioBig()) { //imports big sprites instead
+            
+            super.extrafileletter = "b"; //this changes the name of the files to be imported into the array
         }
-        /// ScrollActor = this;
+        
         setupSprites(img, folder, firstFile);
-        setImage(img[0]);
+        setImage(img[0]); //inital image
         
 
     }
 
-    public Run() {
-    }
 
     public void act() {
 
@@ -55,10 +57,10 @@ public class Run extends PreciseMario {
 
             frame = 0;
 
-            if (originalvx > 0 && vx < 0) { // stops deceleration if vx is 0
+            if (originalvx > 0 && vx < 0) { // stops deceleration if vx is 0 and mario is facing right
                 decx = 0;
                 vx = 0.001;
-            } else if (originalvx < 0 && vx > 0) {
+            } else if (originalvx < 0 && vx > 0) { // stops deceleration if vx is 0 and mario is facing left
                 decx = 0;
                 vx = 0.001;
             } else { // start decelerating
@@ -66,15 +68,13 @@ public class Run extends PreciseMario {
                 stopAccelerating();
             }
 
-            // System.out.println(vx);
-            // ax = 0.8;
         } else {
             // vx = originalvx;
             if (Math.abs(vx) >= Math.abs(terminalvx)) { // stop from running too fast
                 accx = 0;
                 System.out.println("termvx reached");
             } else {
-                accx = originalaccx;
+                accx = originalaccx; //keep accelerating
 
             }
             startAccelerating();
@@ -87,15 +87,13 @@ public class Run extends PreciseMario {
             if (obj != null) {
                 vy = 0;
                 double diff = 0;
-                diff = ObjectYOffset(obj);
-                setLocation(getX(), getY() - diff);
+                diff = ObjectYOffset(obj); //finds how much mario is clipped into the floor by
+                setLocation(getX(), getY() - diff); //offsets that difference
             }
         }
 
         draw(frame);
 
-        
-        
         
         if (isTouching(Barrel.class)) {
             Lives--;
@@ -119,7 +117,7 @@ public class Run extends PreciseMario {
         setImage(img[frame]);
     }
 
-    protected void addedToWorld(World world) {
+    protected void addedToWorld(World world) { //scales sprites if it big or small mario 
         if (isMarioBig()) {
             scaleSprites(img, bigMariosizx, bigMariosizy);
         } else {
