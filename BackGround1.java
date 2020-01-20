@@ -29,7 +29,9 @@ public class BackGround1 extends World
         addObject(scrollActor, 20, (height-60));
         addObject(new DK(), 4950  , (height-250));
         addObject(new Goomba(), 450 , (height-54));
-        addObject(new Turtle(), 3250 , (height-54));
+        addObject(new Turtle(), 1200 , (height-54));
+        addObject(new Goomba(), 2000 , (height-54));
+        addObject(new Goomba(), 2500 , (height-54));
         //addObject(new Run("mario/run_right/smw_",0,1,"right", 1, 0), 500, 400);
         // for(int i = 0; i < worldLength; i += 1000)// This is for the secondary floor, change after += to change the distance. 
         // addObject(new Floor(), i, height-20);

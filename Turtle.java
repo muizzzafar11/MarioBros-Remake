@@ -15,43 +15,45 @@ public class Turtle extends Actor
         if(getX() <= 0)
         {
             getWorld().removeObject(this);
-        }else{
-            if(movingDirection == -1 && animationCounter% 14 == 0){
-                Animation2();  
-
-            }
-
-            if(movingDirection == 1 && animationCounter% 14 == 0){
-                Animation();  
-            }
-
-            if(getX() < 200)
-            {
-                movingDirection = 1;
-            } 
-            if(getX() > 600)
-            {   
-                movingDirection = -1;
-            }
-            //setLocation(getX(), getY() + 1);
-            while(isTouching(PreciseMario.class)==false && isTouching(Floor.class))
-            { 
-                setLocation(getX() + (movingDirection), getY() - 1);
-
-            }
-            if(isTouching(PreciseMario.class))
-                getWorld().removeObject(this);
-            // while(isTouching(Floor.class))
-            // {
-                // setLocation(getX() - (movingDirection), getY() - 1);
-
-            // }
+        }
+        else{
+        if(movingDirection == -1 && animationCounter% 14 == 0){
+            Animation2();  
 
         }
-        
-        
-    } 
 
+        if(movingDirection == 1 && animationCounter% 14 == 0){
+            Animation();  
+        }
+
+
+        if(getX() < 200)
+        {
+        movingDirection = 1;
+        } 
+        if(getX() > 600);
+        {   
+        movingDirection = -1;
+        }
+        setLocation(getX(), getY() + 1);
+        while(isTouching(PreciseMario.class)==false && isTouching(Floor.class))
+        { 
+            setLocation(getX() + (movingDirection), getY() - 1);
+
+        }
+
+        while(isTouching(Floor.class))
+        {
+            setLocation(getX() - (movingDirection), getY() - 1);
+
+        }
+        if(isTouching(PreciseMario.class))
+            getWorld().removeObject(this);
+            
+        }
+    }
+
+     
     public void Animation(){
         if(frames == 1){
             setImage(Turtle1);
