@@ -57,7 +57,8 @@ public class Mario extends Actor
         }
         if(speed > 0)
         {
-            while(isTouching(Floor.class))
+            while(isTouching(Floor.class) || isTouching(Mountains.class)
+            || isTouching(Mountains2.class))
             {
                 speed = 0;
                 setLocation(getX(), getY() - 1);
@@ -69,7 +70,8 @@ public class Mario extends Actor
         }
         if(speed <= 0)
         {
-            while(isTouching(Floor.class))
+            while(isTouching(Floor.class) || isTouching(Mountains.class) 
+            || isTouching(Mountains2.class))
             {
                 speed = 0;
                 setLocation(getX(), getY() + 1);
