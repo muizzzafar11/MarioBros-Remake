@@ -21,8 +21,6 @@ public class BackGround1 extends World
         GreenfootImage backImage = new GreenfootImage("back.png");
         scroller = new Scroller(this, backImage, worldLength, height);
         scrollActor = new Mario();
-        
-        
         // Adding actor
         addObject(scrollActor, 20, (height-60));
         addObject(new DK(), 4500 , (height-100));
@@ -37,7 +35,8 @@ public class BackGround1 extends World
     }
 
     public void act() {
-        scroll();    
+        scroll();  
+        showText("Score: "+new Coins().textDisp(), 40, 20);
     }
 
     private void scroll () {

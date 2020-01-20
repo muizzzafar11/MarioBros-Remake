@@ -8,7 +8,9 @@ public class Coins extends Actor
         if(isTouching(Mario.class)) {
             getWorld().removeObject(this);
             coins++;
-            System.out.println(coins);
         }
     }    
+    public int textDisp() {
+       return coins; 
+    }
 }
