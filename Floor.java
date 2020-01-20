@@ -16,4 +16,8 @@ public class Floor extends Actor
     {
         // Add your action code here.
     }    
+    
+    protected void addedToWorld(World world){
+        getImage().scale(BackGround1.width, BackGround1.height/6);
+    }
 }
