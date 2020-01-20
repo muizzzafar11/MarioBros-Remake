@@ -6,7 +6,7 @@ import java.util.List;
  * @author (your name) 
  * @version (a version number or a date)
  */
-public abstract class PreciseMario extends SmoothMover
+public class PreciseMario extends SmoothMover
 {
     /**
      * Act - do whatever the PreciseMario wants to do. This method is called whenever
@@ -19,7 +19,7 @@ public abstract class PreciseMario extends SmoothMover
     protected double decx;
     protected int stage = 2;
     
-    int Lives = 3;
+    //static int Lives = 3;
     int height, width;
     
     String key = "";
@@ -46,6 +46,9 @@ public abstract class PreciseMario extends SmoothMover
        
     }
     
+    public PreciseMario() {
+    
+    }
     public void setupSprites(GreenfootImage[] img, String folder, int firstFile){
         for(int i = 0; i < img.length; i++){
             img[i] = new GreenfootImage(folder + (firstFile+i) +extrafileletter + ext);
@@ -189,15 +192,15 @@ public abstract class PreciseMario extends SmoothMover
     }
     
     public void act() {
-        if(isTouching(Turtle.class)) {
-            Lives--;
-        }
-        if(isTouching(Mountains2.class)){
-
-        }
-        if(isTouching(Mountains.class)){
-        
-        }        
+        // if(isTouching(Turtle.class)) {
+            // Lives--;
+        // }
+        // if(isTouching(Barrel.class)) {
+            // Lives--;
+        // }   
+        // if(isTouching(Goomba.class)) {
+            // Lives--;
+        // }
     }
     
 }

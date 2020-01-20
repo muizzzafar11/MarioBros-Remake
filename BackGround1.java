@@ -17,7 +17,6 @@ public class BackGround1 extends World
     private int worldLength = 5000;
     private int score = 0; 
     int mod = 1;
-    //    public int lives = 3;
     //private int backHeight, backWidth;
     public BackGround1() {    // Scales the size of the screen
         super(width, height-50, 1, false);
@@ -53,11 +52,11 @@ public class BackGround1 extends World
             mod ++;
         }
     }
-
+    static Run mover = new Run();
         public void act() {
         scroll();  
         showText("Score: "+new Coins().textDisp(), 40, 20);
-        //showText("Lives:"+lives, 40, 40);
+        showText("Lives:"+mover.Lives, 40, 40);
     }
     // the scroller class
     private void scroll () {
