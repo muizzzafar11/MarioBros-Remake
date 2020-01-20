@@ -30,9 +30,9 @@ public class BackGround1 extends World
             // addObject(new Floor(), i, height-20);
         int j = height-110;
         for(int i = 400; i < worldLength; i+=750){
-            addObject(new Mountains2(),i+120,j-15);
+            addObject(new Mountains2(),i+150,j-15);
             addObject(new Mountains(), i , j);
-            addObject(new Mountains(), i+230,j);
+            addObject(new Mountains(), i+300,j);
             addObject(new itembox("images/itembox/item_", 0, 4), 500 , (height-200));
             addObject(new Floor(), i, height-50);            
             addObject(new Coins(),Greenfoot.getRandomNumber(worldLength-50) 
