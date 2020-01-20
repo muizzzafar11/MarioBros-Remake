@@ -15,7 +15,7 @@ public class BackGround1 extends World
     private Actor scrollActor;
     private int worldLength = 5000;
     private int score = 0; 
-    
+    int mod = 1;
     //private int backHeight, backWidth;
     public BackGround1() {    // Scales the size of the screen
         super(width, height, 1, false);
@@ -30,16 +30,18 @@ public class BackGround1 extends World
             // addObject(new Floor(), i, height-20);
         int j = height-110;
         for(int i = 400; i < worldLength; i+=750){
+            if(mod % 3 == 0){
             addObject(new Mountains2(),i+150,j-40);
             addObject(new Mountains(), i , j-20);
             addObject(new Mountains(), i+300,j-20);
+        }
             addObject(new itembox("images/itembox/item_", 0, 4), 500
             , (height-200));
             addObject(new Floor(), i, height-50);            
             addObject(new Coins(),Greenfoot.getRandomNumber(worldLength-50) 
             , Greenfoot.getRandomNumber(height-80));
-        
-    }
+        mod ++;
+       }
 }
 
     public void act() {
