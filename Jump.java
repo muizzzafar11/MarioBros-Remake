@@ -12,16 +12,17 @@ public class Jump extends PreciseMario
     int frameCounter = 0, frame =0; //manages sprites and animation speed 
     int animationSpeed = 8;
     String ext = ".png";
-    double terminalVel = 3;
     int direction = 0;
-    
+    int bigMariosizx = 12, bigMariosizy = 7;
+    int smallMariosizx = 13, smallMariosizy = 10;
     
     public Jump(String folder, int firstFile, int lastFile, String key, double vx, double vy,int direction){
         super(key, vx, vy);
         img = new GreenfootImage[(lastFile-firstFile)+1];
-        for(int i = 0; i < img.length; i++){
-            img[i] = new GreenfootImage(folder + (firstFile+i) + ext);
-        }
+        if(isMarioBig()){
+            extrafileletter = "b";
+        } 
+        setupSprites(img, folder, firstFile);
         setImage(img[0]);
         this.direction = direction;
        
@@ -87,10 +88,10 @@ public class Jump extends PreciseMario
                    getWorld().removeObject(this);
                } else {
                   if(direction > 0){
-                    getWorld().addObject(new Run("mario/run_right/smw_", 0, 1, "right", 1, 0), (int)getX(), (int)getY());
+                    getWorld().addObject(new Run("mario/run_right/smw_", 0, 3, "right", 1, 0), (int)getX(), (int)getY());
                   } else{
                       System.out.println("ge");
-                      getWorld().addObject(new Run("mario/run_left/smw_",3, 4, "left", -1, 0), (int)getX(), (int)getY());
+                      getWorld().addObject(new Run("mario/run_left/smw_",0, 3, "left", -1, 0), (int)getX(), (int)getY());
   
                   }
                   getWorld().removeObject(this);
@@ -142,11 +143,15 @@ public class Jump extends PreciseMario
     protected void addedToWorld(World world){
         super.px = getX();
         super.py = getY();
-        for(int i = 0; i < img.length; i++){
-            img[i].scale(getWorld().getHeight()/15, getWorld().getHeight()/15);
-
-        }
-        setLocation(getX(), getY() - 5);
+        if(isMarioBig()){
+            scaleSprites(img, bigMariosizx, bigMariosizy);
+        } else {
+            scaleSprites(img, smallMariosizx, smallMariosizy);
+        }   
+        
+        //setLocation(getX(), getY() - 5);
     }
+    
+    
       
 }

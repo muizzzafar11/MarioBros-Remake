@@ -16,14 +16,18 @@ public class Run extends PreciseMario
     int frameCounter = 0, frame =0; //manages sprites and animation speed 
     int animationSpeed = 6;
     String ext = ".png";
-   
+    int bigMariosizx = 13, bigMariosizy = 8;
+    int smallMariosizx = 13, smallMariosizy = 12;
     
     public Run(String folder, int firstFile, int lastFile, String key,double vx,double vy){
         super(key, vx, vy);
         img = new GreenfootImage[(lastFile-firstFile)+1];
-        for(int i = 0; i < img.length; i++){
-            img[i] = new GreenfootImage(folder + (firstFile+i) + ext);
+        if(isMarioBig()){
+            System.out.println("b");
+            super.extrafileletter = "b";
         }
+        
+        setupSprites(img, folder, firstFile);
         setImage(img[0]);
         
     }
@@ -157,9 +161,10 @@ public class Run extends PreciseMario
     protected void addedToWorld(World world){
         this.px = getX(); 
         this.py = getY();
-        for(int i = 0; i < img.length; i++){
-            img[i].scale(getWorld().getHeight()/15, getWorld().getHeight()/15);
-
+        if(isMarioBig()){
+            scaleSprites(img, bigMariosizx, bigMariosizy);
+        } else {
+            scaleSprites(img, smallMariosizx, smallMariosizy);
         }
     }
  
