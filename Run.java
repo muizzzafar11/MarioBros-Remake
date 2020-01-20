@@ -20,13 +20,15 @@ public class Run extends PreciseMario
     int smallMariosizx = 13, smallMariosizy = 12;
     
     public Run(String folder, int firstFile, int lastFile, String key,double vx,double vy){
+        
         super(key, vx, vy);
+        BackGround1.scrollActor = this;
         img = new GreenfootImage[(lastFile-firstFile)+1];
         if(isMarioBig()){
             System.out.println("b");
             super.extrafileletter = "b";
         }
-        
+        ///ScrollActor = this;
         setupSprites(img, folder, firstFile);
         setImage(img[0]);
         

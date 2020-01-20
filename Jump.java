@@ -18,6 +18,7 @@ public class Jump extends PreciseMario
     
     public Jump(String folder, int firstFile, int lastFile, String key, double vx, double vy,int direction){
         super(key, vx, vy);
+        BackGround1.scrollActor = this;
         img = new GreenfootImage[(lastFile-firstFile)+1];
         if(isMarioBig()){
             extrafileletter = "b";

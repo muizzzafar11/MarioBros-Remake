@@ -42,7 +42,7 @@ public abstract class PreciseMario extends SmoothMover
        }
        originalaccx = accx;
        originaldecx = decx;
-       terminalvx = 5;
+       terminalvx = 10;
        
     }
     
@@ -188,7 +188,7 @@ public abstract class PreciseMario extends SmoothMover
                     if(originalvx > 0){
                         double newVx;
                         if(Greenfoot.isKeyDown("right")){
-                            newVx = 3;
+                            newVx = vx;
                         }else{
                             newVx = 0.0;
                         }
@@ -197,7 +197,7 @@ public abstract class PreciseMario extends SmoothMover
                     } else {
                         double newVx;
                         if(Greenfoot.isKeyDown("left")){
-                            newVx = -3;
+                            newVx = vx;
                         }else{
                             newVx = 0.0;
                         }
