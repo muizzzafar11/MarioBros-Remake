@@ -15,26 +15,31 @@ public class BackGround1 extends World
     private Actor scrollActor;
     private int worldLength = 5000;
     private int score = 0; 
+    
     //private int backHeight, backWidth;
     public BackGround1() {    // Scales the size of the screen
         super(width, height, 1, false);
         GreenfootImage backImage = new GreenfootImage("back.png");
         scroller = new Scroller(this, backImage, worldLength, height);
         scrollActor = new Mario();
-        
-        
-        // Adding actor
         addObject(scrollActor, 20, (height-60));
         addObject(new DK(), 4500 , (height-100));
         addObject(new Goomba(), 450 , (height-54));
         addObject(new Turtle(), 3250 , (height-54));
-        addObject(new itembox("images/itembox/item_", 0, 4), 500 , (height-200));
-        for(int i = 0; i <= worldLength; i += 200){// This is for the secondary floor, change after += to change the distance. 
+        // for(int i = 0; i < worldLength; i += 1000)// This is for the secondary floor, change after += to change the distance. 
+            // addObject(new Floor(), i, height-20);
+        int j = height-110;
+        for(int i = 400; i < worldLength; i+=750){
+            addObject(new Mountains2(),i+120,j-15);
+            addObject(new Mountains(), i , j);
+            addObject(new Mountains(), i+230,j);
+            addObject(new itembox("images/itembox/item_", 0, 4), 500 , (height-200));
             addObject(new Floor(), i, height-50);            
             addObject(new Coins(),Greenfoot.getRandomNumber(worldLength-50) 
             , Greenfoot.getRandomNumber(height-80));
-        }
+        
     }
+}
 
     public void act() {
         scroll();    
