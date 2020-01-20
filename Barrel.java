@@ -11,7 +11,7 @@ public class Barrel extends Actor
     private GreenfootImage Barrel4 = new GreenfootImage("BarrelAni4.png");
     private int barreltoBackWide = ((BackGround1.width)-100)/20;
     private int barreltoBackHigh = ((BackGround1.height)-100)/15;
-    Mario mario = new Mario();
+    //Mario mario = new Mario();
      public Barrel () {
         Barrel1.scale(barreltoBackWide, barreltoBackHigh);
         setImage(Barrel1);
@@ -21,7 +21,6 @@ public class Barrel extends Actor
         setImage(Barrel3);
         Barrel4.scale(barreltoBackWide, barreltoBackHigh);
         setImage(Barrel4);
-        
     }
     
     public void act() 

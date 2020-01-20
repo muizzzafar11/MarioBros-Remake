@@ -5,7 +5,7 @@ public class Coins extends Actor
     private static int coins = 0;
     public void act() 
     {
-        if(isTouching(Mario.class)) {
+        if(isTouching(PreciseMario.class)) {
             getWorld().removeObject(this);
             coins++;
         }

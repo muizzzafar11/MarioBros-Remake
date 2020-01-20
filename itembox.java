@@ -38,7 +38,7 @@ public class itembox extends Actor
            draw(4); //draws image that shows block is hit
        }
        
-       if(isTouching(Mario.class)){
+       if(isTouching(PreciseMario.class)){
            hit = true;
        }
        
