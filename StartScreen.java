@@ -19,11 +19,11 @@ public class StartScreen extends World
         super(new BackGround1().width-100, new BackGround1().width-300, 1);
         prepare();
     }
-
+    
     private void prepare(){
         showText("Press Enter to start", this.getWidth()/2+25, this.getHeight()/2+50); 
     }
-
+    // Checking for key inputs
     public void act(){
         if(Greenfoot.isKeyDown("enter")){
         Greenfoot.setWorld(new BackGround1());

@@ -21,7 +21,7 @@ public class Finish extends World
     public static int height = (int)screenSize.getHeight();
     public Finish(String text)
     {    
-        // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
+        // Create a new world with total width of screen and height of screen -500cells with a cell size of 1x1 pixels.
         super(width-500, height-500,1);  
         showText("" + text, (width-500)/2, (height-500)/2);
     }

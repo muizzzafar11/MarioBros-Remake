@@ -16,7 +16,8 @@ public class DK extends Actor
             Greenfoot.setWorld(new Finish("You Won"));
             Greenfoot.stop();
         }
-        if(System.currentTimeMillis() - lastTime > 2500) //adds barrels
+        // for throwing the barrels every after some specified time
+        if(System.currentTimeMillis() - lastTime > 2500)
         {
             lastTime = System.currentTimeMillis();
             getWorld().addObject(new Barrel(), getX(), getY());
