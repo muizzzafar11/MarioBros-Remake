@@ -11,11 +11,11 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, and Greenfoot)
  * 
  * @version 3.0
  */
-public abstract class SmoothMover extends Actor
+public class SmoothMover extends Actor
 {
     private double exactX;
     private double exactY;
-
+    static int Lives = 3;
     /**
      * Move forward by the specified distance.
      * (Overrides the method in Actor).
@@ -74,4 +74,19 @@ public abstract class SmoothMover extends Actor
     {
         return exactY;
     }
+    
+    // public void act() {
+        // if(isTouching(Turtle.class)) {
+            // Lives--;
+        // }
+        // if(isTouching(Barrel.class)) {
+            // Lives --;
+        // }   
+        // if(isTouching(Goomba.class)) {
+            // Lives--;
+        // }
+    // }
+    // public int getLives() {
+        // return Lives; 
+    // }
 }
