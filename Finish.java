@@ -1,5 +1,6 @@
 import greenfoot.*;
-
+import java.awt.Toolkit;
+import java.awt.Dimension;
 /**
  * Write a description of class Finish here.
  * 
@@ -13,10 +14,14 @@ public class Finish extends World
      * Constructor for objects of class Finish.
      * 
      */
+    public static Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize(); 
+    public static int width = (int)(screenSize.getWidth()-300); 
+    public static int height = (int)(screenSize.getHeight()/1.25);
+
     public Finish()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
-        super(1500, 1000, 1); 
+        super(width, height, 1,false); 
         addObject(new Floor(), 125, 1000);
         addObject(new Floor(), 375, 1000);
         addObject(new Floor(), 625, 1000);
