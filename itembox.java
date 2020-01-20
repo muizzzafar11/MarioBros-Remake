@@ -43,7 +43,7 @@ public class itembox extends Actor
        
        if(isTouching(PreciseMario.class)){
            hit = true;
-           getWorld().removeObject(this);
+           //getWorld().removeObject(this);
        }
     }
     

@@ -1,3 +1,6 @@
+//Taha M
+//ICS4U1
+//Summative
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
@@ -13,9 +16,9 @@ public class Jump extends PreciseMario
     int animationSpeed = 8;
     String ext = ".png";
     int direction = 0;
-    int bigMariosizx = 12, bigMariosizy = 7; 
-    int smallMariosizx = 13, smallMariosizy = 10;
-    static Run run = new Run();
+    int bigMariosizx = 12, bigMariosizy = 7; //scales sprite for big mario
+    int smallMariosizx = 13, smallMariosizy = 10; //scales sprites for small mario
+    
     public Jump(String folder, int firstFile, int lastFile, String key, double vx, double vy,int direction){
         super(key, vx, vy);
         BackGround1.scrollActor = this; //tells scroller to track this mario
@@ -34,17 +37,17 @@ public class Jump extends PreciseMario
         
         //Animation frame
             
-               if(Math.abs(vx) > Math.abs(terminalvx)){ //stops accerlation after certain velocity
-                   accx = 0;
-               } else {
-                   accx = originalaccx;
+           if(Math.abs(vx) > Math.abs(terminalvx)){ //stops accerlation after certain velocity
+             accx = 0;
+           } else {
+             accx = originalaccx;
                 
-               }
-               startAccelerating();
+           }
+           startAccelerating();
                
            updatePos();
            draw(frame);
-           if(vy > 0){
+           if(vy > 0){//changes frame if mario is falling
                frame = 1;
            }
            if(isTouching(Floor.class)){
@@ -52,17 +55,17 @@ public class Jump extends PreciseMario
                if(obj != null){ //resets position back up to ontop of ground
                    vy = 0;
                    double diff = 0;
-                   diff = ObjectYOffset(obj);
+                   diff = ObjectYOffset(obj); //difference that mario is clipped into the floor by
                    System.out.println("diff");
-                   setLocation(getX(), getY()-diff);
+                   setLocation(getX(), getY()-diff); //offsets difference in y axis
                }
                
                if(otherKeyPressed()){ //removes mario 
                    getWorld().removeObject(this);
                } else {
-                  if(direction > 0){ //creates new run idle animation so mario isn't jumping on the ground
+                  if(direction > 0){ //creates new run idle animation when mario has hit the ground facing right
                     getWorld().addObject(new Run("mario/run_right/smw_", 0, 3, "right", 1, 0), (int)getX(), (int)getY());
-                  } else{
+                  } else{ //mario was jumping left so he should be facing left while on the ground 
                       System.out.println("ge");
                       getWorld().addObject(new Run("mario/run_left/smw_",0, 3, "left", -1, 0), (int)getX(), (int)getY());
   
@@ -72,56 +75,6 @@ public class Jump extends PreciseMario
            }
         
         
-        
-        
-        // if (isTouching(Barrel.class)) {
-            // Lives--;
-        // } 
-        // if (isTouching(Goomba.class)) {
-            // Lives--;
-        // }
-        // if (isTouching(Turtle.class)) {
-            // Lives--;
-        // }
-        // if (Lives <= 0) {
-            // Greenfoot.setWorld(new Finish("You died"));
-            // Greenfoot.stop();
-        // }
-        // if (otherKeyPressed()) {
-            // getWorld().removeObject(this);
-        // }
-        
-        
-        
-        /*
-        //if(vy < terminalVel){
-          //  vy -= gravity;
-        //}
-        updatePos();
-        
-        if(floorHitDetection() != null){ 
-                Actor obj = floorHitDetection();
-                double difference = ObjectYOffset(obj);
-                py -= difference;
-                //py -= gravity;
-                System.out.println(difference);
-        } 
-        
-        //System.out.println(px + " " + py + " " + getX() + " " + getY());
-        if(isTouching(Floor.class)){
-                draw(1);
-                Greenfoot.delay(5);
-                changeVel(0,0);
-                //getWorld().addObject(, _x_, _y_)
-                otherKeyPressed();
-                //System.out.println("hi");
-                getWorld().removeObject(this);
-            } else {
-                draw(0);
-                
-            }
-            setLocation(px, py);
-            */
     }  
     
     public void draw(int frame){
@@ -130,7 +83,7 @@ public class Jump extends PreciseMario
     
     protected void addedToWorld(World world){
         
-        if(isMarioBig()){
+        if(isMarioBig()){ //scales sprites based on if mario is big or small(stage 1 or stage 2)
             scaleSprites(img, bigMariosizx, bigMariosizy);
         } else {
             scaleSprites(img, smallMariosizx, smallMariosizy);

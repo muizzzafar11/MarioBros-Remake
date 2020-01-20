@@ -19,5 +19,9 @@ public class Mountains extends Actor
     public void act() 
     {
         
-    }    
+    }
+    
+    public void hitdetect(int px, int py){
+        
+    }
 }

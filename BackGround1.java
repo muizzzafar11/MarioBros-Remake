@@ -10,7 +10,7 @@ public class BackGround1 extends World
     // setting the height and width of screen
     public static int width = (int)(screenSize.getWidth()/1.5); 
     public static int height = (int)(screenSize.getHeight()/1.25);
-
+    
     //private static int floorDist = 75;
     private Scroller scroller;
     public static Actor scrollActor;
@@ -23,7 +23,7 @@ public class BackGround1 extends World
         // setting the image and initializing other stuff
         GreenfootImage backImage = new GreenfootImage("back.png");
         scroller = new Scroller(this, backImage, worldLength, height);
-        
+        PreciseMario.Lives = 3;
         // adding enemies, flag and mario
         
         addObject(new DK(), 4950  , (height-250));
@@ -57,11 +57,11 @@ public class BackGround1 extends World
         scrollActor = new Run("mario/run_right/smw_",0,3,"right", 1, 0);
         addObject(scrollActor, 20, (height-60));
     }
-    static Run mover = new Run();
+    
         public void act() {
         scroll();  
         showText("Score: "+new Coins().textDisp(), 40, 20);
-        showText("Lives:"+mover.Lives, 40, 40);
+        showText("Lives:"+PreciseMario.Lives, 40, 40);
     }
     // the scroller class
     private void scroll () {
