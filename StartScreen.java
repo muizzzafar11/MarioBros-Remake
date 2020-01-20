@@ -16,15 +16,12 @@ public class StartScreen extends World
     public StartScreen()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
-        super(800, 600, 1);
+        super(new BackGround1().width-100, new BackGround1().width-300, 1);
         prepare();
     }
 
     private void prepare(){
-        TitleWords titlewords = new TitleWords();
-        TitleEnter titleEnter = new TitleEnter();
-        addObject(titlewords, 400, 300);
-        addObject(titleEnter, 400, 480);
+        showText("Press Enter to start", this.getWidth()/2+25, this.getHeight()/2+50); 
     }
 
     public void act(){

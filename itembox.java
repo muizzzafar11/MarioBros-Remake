@@ -24,6 +24,9 @@ public class itembox extends Actor
     
     public void act() 
     {
+        if(isTouching(PreciseMario.class)) {
+            new Coins().coins += 5;
+        }
         if(!hit){
         frameCounter++;
             if(frameCounter % animationSpeed == 0){ //increments frame drawn
@@ -40,8 +43,8 @@ public class itembox extends Actor
        
        if(isTouching(PreciseMario.class)){
            hit = true;
+           getWorld().removeObject(this);
        }
-       
     }
     
     public void draw(int frame){

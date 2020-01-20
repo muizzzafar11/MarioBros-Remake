@@ -228,4 +228,16 @@ public abstract class PreciseMario extends SmoothMover
         return false;
     }
     
+    public void act() {
+        if(isTouching(Turtle.class)) {
+            Lives--;
+        }
+        if(isTouching(Mountains2.class)){
+
+        }
+        if(isTouching(Mountains.class)){
+        
+        }        
+    }
+    
 }

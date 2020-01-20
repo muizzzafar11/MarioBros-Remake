@@ -16,7 +16,6 @@ public class Turtle extends Actor
         {
             getWorld().removeObject(this);
         }else{
-
             if(movingDirection == -1 && animationCounter% 14 == 0){
                 Animation2();  
 
@@ -34,14 +33,14 @@ public class Turtle extends Actor
             {   
                 movingDirection = -1;
             }
-
-        
-            setLocation(getX(), getY() + 1);
-            while(isTouching(Floor.class))
+            //setLocation(getX(), getY() + 1);
+            while(isTouching(PreciseMario.class)==false && isTouching(Floor.class))
             { 
                 setLocation(getX() + (movingDirection), getY() - 1);
 
             }
+            if(isTouching(PreciseMario.class))
+                getWorld().removeObject(this);
             // while(isTouching(Floor.class))
             // {
                 // setLocation(getX() - (movingDirection), getY() - 1);
@@ -49,6 +48,8 @@ public class Turtle extends Actor
             // }
 
         }
+        
+        
     } 
 
     public void Animation(){

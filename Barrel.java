@@ -22,10 +22,9 @@ public class Barrel extends Actor
         Barrel4.scale(barreltoBackWide, barreltoBackHigh);
         setImage(Barrel4);
     }
-    
     public void act() 
-    {   animationCounter++;
-        
+    {   
+        animationCounter++;
         if(getX() <= 0)
         {
             getWorld().removeObject(this);
@@ -39,11 +38,9 @@ public class Barrel extends Actor
             setLocation(getX() - 3, getY() - 3);
             
           }
-          // while(isTouching(Floor.class))
-          // {
-            // setLocation(getX() + 3, getY() - 3);
-            
-          // }
+          if(isTouching(PreciseMario.class)) {
+            getWorld().removeObject(this);
+          }
        }
 
     }

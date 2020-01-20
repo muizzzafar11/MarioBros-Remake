@@ -43,6 +43,10 @@ public class Goomba extends Actor
                 setLocation(getX() + (movingDirection), getY() - 1);
 
             }
+            
+            if(isTouching(PreciseMario.class)) {
+            getWorld().removeObject(this);
+          }
             // while(isTouching(Floor.class))
             // {
                 // setLocation(getX() - (movingDirection), getY() - 1);
