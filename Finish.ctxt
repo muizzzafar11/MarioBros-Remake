@@ -1,5 +1,5 @@
 #BlueJ class context
 comment0.target=Finish
-comment1.params=
-comment1.target=Finish()
+comment1.params=text
+comment1.target=Finish(java.lang.String)
 numComments=2
