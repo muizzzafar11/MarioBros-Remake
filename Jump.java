@@ -13,18 +13,18 @@ public class Jump extends PreciseMario
     int animationSpeed = 8;
     String ext = ".png";
     int direction = 0;
-    int bigMariosizx = 12, bigMariosizy = 7;
+    int bigMariosizx = 12, bigMariosizy = 7; 
     int smallMariosizx = 13, smallMariosizy = 10;
     
     public Jump(String folder, int firstFile, int lastFile, String key, double vx, double vy,int direction){
         super(key, vx, vy);
-        BackGround1.scrollActor = this;
-        img = new GreenfootImage[(lastFile-firstFile)+1];
+        BackGround1.scrollActor = this; //tells scroller to track this mario
+        img = new GreenfootImage[(lastFile-firstFile)+1]; 
         if(isMarioBig()){
-            extrafileletter = "b";
+            extrafileletter = "b"; //changes sprite filenames to be put into array
         } 
-        setupSprites(img, folder, firstFile);
-        setImage(img[0]);
+        setupSprites(img, folder, firstFile); //puts sprites into array
+        setImage(img[0]); //intial image
         this.direction = direction;
        
     }
@@ -34,55 +34,33 @@ public class Jump extends PreciseMario
         
         //Animation frame
             
-               if(Math.abs(vx) > Math.abs(terminalvx)){
+               if(Math.abs(vx) > Math.abs(terminalvx)){ //stops accerlation after certain velocity
                    accx = 0;
                } else {
                    accx = originalaccx;
                 
                }
                startAccelerating();
-               //System.out.println(vx + " " + accx);
                
-               
-           /* 
-            if(!Greenfoot.isKeyDown(key)){
-               accx = 0;
-               
-               frame= 0;
-               
-               
-           } else {
-                if(Math.abs(vx) > Math.abs(terminalvx)){
-                   accx = 0;
-               } else {
-               accx = originalaccx;
-                
-               }
-               startAccelerating();
-               
-               
-           }
-           */
            updatePos();
            draw(frame);
            if(vy > 0){
                frame = 1;
            }
            if(isTouching(Floor.class)){
-               System.out.println("hit");
                Actor obj = floorHitDetection();
-               if(obj != null){
+               if(obj != null){ //resets position back up to ontop of ground
                    vy = 0;
                    double diff = 0;
                    diff = ObjectYOffset(obj);
                    System.out.println("diff");
                    setLocation(getX(), getY()-diff);
                }
-               //vy = 1;
-               if(otherKeyPressed()){
+               
+               if(otherKeyPressed()){ //removes mario 
                    getWorld().removeObject(this);
                } else {
-                  if(direction > 0){
+                  if(direction > 0){ //creates new run idle animation so mario isn't jumping on the ground
                     getWorld().addObject(new Run("mario/run_right/smw_", 0, 3, "right", 1, 0), (int)getX(), (int)getY());
                   } else{
                       System.out.println("ge");

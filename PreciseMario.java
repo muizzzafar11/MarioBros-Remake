@@ -33,28 +33,30 @@ public class PreciseMario extends SmoothMover
        originalvy = vy;
        this.vx = vx;
        this.vy = vy;
-       if(originalvx < 0){
+       if(originalvx < 0){ //if mario is facing left
            decx = 0.5;
            accx = -0.1;
-       }else if(originalvx > 0) {
+       }else if(originalvx > 0) { //if  mario is facing right
            decx = -0.5;
            accx = 0.1;
        }
        originalaccx = accx;
        originaldecx = decx;
-       terminalvx = 10;
+       terminalvx = 10; //fastest mario can travel
        
     }
     
     public PreciseMario() {
     
     }
+    //puts sprites in to array
     public void setupSprites(GreenfootImage[] img, String folder, int firstFile){
         for(int i = 0; i < img.length; i++){
             img[i] = new GreenfootImage(folder + (firstFile+i) +extrafileletter + ext);
         }
     }
     
+    //scales sprites in array to sizes given
     public void scaleSprites(GreenfootImage[] img, int sizeX, int sizeY){
         for(int i = 0; i < img.length; i++){
             img[i].scale(getWorld().getHeight()/sizeX, getWorld().getHeight()/sizeY);
@@ -88,17 +90,13 @@ public class PreciseMario extends SmoothMover
 
     }
     
-    public void changeVel(double vx, double vy){
-        this.vx = vx;
-        this.vy = vy;
-    }
-  
     protected void addedToWorld(World world){
        height = getWorld().getHeight();
        width = getWorld().getWidth();
        
     }
     
+    //finds if mario is on top or bottom 
     public double ObjectYOffset(Actor obj){
         double topYdiff = (getY()+getImage().getHeight()/2) - (obj.getY() - obj.getImage().getHeight()/2);
         double bottomYdiff = (getY()-getImage().getHeight()/2) - (obj.getY() + obj.getImage().getHeight()/2);
@@ -121,17 +119,19 @@ public class PreciseMario extends SmoothMover
         }
     }
     
+    //returns obkect if mario is touching it 
     public Actor floorHitDetection(){
         Actor object  = getOneObjectAtOffset(getImage().getWidth()/2, getImage().getHeight()/2, Floor.class);
        return object;
     }
     
-    public boolean otherKeyPressed(){
+    
+    public boolean otherKeyPressed(){ //adds mario object if new key is pressed
        
             int index = -1;
             for(int i = 0; i < possibleKeys.length; i++){
                 if(Greenfoot.isKeyDown(possibleKeys[i]) && possibleKeys[i] != key){
-                    if(!(Greenfoot.isKeyDown("left") && Greenfoot.isKeyDown("right"))){
+                    if(!(Greenfoot.isKeyDown("left") && Greenfoot.isKeyDown("right"))){ //stops mario from moving right then left constantly
                         index = i;
                         break;
                     }
@@ -160,18 +160,18 @@ public class PreciseMario extends SmoothMover
                 case 2: 
                     if(originalvx > 0){
                         double newVx;
-                        if(Greenfoot.isKeyDown("right")){
+                        if(Greenfoot.isKeyDown("right")){ //jumps up then forward
                             newVx = vx;
-                        }else{
+                        }else{//just jumps up
                             newVx = 0.0;
                         }
                         getWorld().addObject(new Jump("mario/jump_right/smw_",0, 1, "up", newVx, -30, 1), (int)getX(), (int)getY());
                         
                     } else {
                         double newVx;
-                        if(Greenfoot.isKeyDown("left")){
+                        if(Greenfoot.isKeyDown("left")){ //jumps up then backward
                             newVx = vx;
-                        }else{
+                        }else{ //just jumps up
                             newVx = 0.0;
                         }
                         getWorld().addObject(new Jump("mario/jump_left/smw_",0, 1, "up", newVx, -30, -1), (int)getX(), (int)getY());
