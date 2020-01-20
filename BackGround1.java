@@ -45,7 +45,8 @@ public class BackGround1 extends World
 }
 
     public void act() {
-        scroll();    
+        scroll();  
+        showText("Score: "+new Coins().textDisp(), 40, 20);
     }
 
     private void scroll () {
