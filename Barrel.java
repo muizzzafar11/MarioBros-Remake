@@ -13,13 +13,13 @@ public class Barrel extends Actor
     private int barreltoBackHigh = ((BackGround1.height)-100)/15;
     Mario mario = new Mario();
      public Barrel () {
-        Barrel1.scale(mario.getMarioWide(), mario.getMarioHigh());
+        Barrel1.scale(barreltoBackWide, barreltoBackHigh);
         setImage(Barrel1);
-        Barrel2.scale(mario.getMarioWide(), mario.getMarioHigh());
+        Barrel2.scale(barreltoBackWide, barreltoBackHigh);
         setImage(Barrel2);
-        Barrel3.scale(mario.getMarioWide(), mario.getMarioHigh());
+        Barrel3.scale(barreltoBackWide, barreltoBackHigh);
         setImage(Barrel3);
-        Barrel4.scale(mario.getMarioWide(), mario.getMarioHigh());
+        Barrel4.scale(barreltoBackWide, barreltoBackHigh);
         setImage(Barrel4);
         
     }
