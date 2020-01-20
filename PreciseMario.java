@@ -70,11 +70,7 @@ public abstract class PreciseMario extends SmoothMover
     public void updatePos(){
        
         setLocation(getX()+vx, getY()+vy);
-        
-        //System.out.println(gravity);
         vy = vy + gravity;
-        //System.out.println(vx);
-        //System.out.println(vy);
         
     }
     
@@ -109,10 +105,6 @@ public abstract class PreciseMario extends SmoothMover
         } else {
             return bottomYdiff;
         }
-        
-       
-        
-       //return topYdiff;
     }
     
     public double ObjectXOffset(Actor obj){
@@ -128,28 +120,6 @@ public abstract class PreciseMario extends SmoothMover
     
     public Actor floorHitDetection(){
         Actor object  = getOneObjectAtOffset(getImage().getWidth()/2, getImage().getHeight()/2, Floor.class);
-        /*
-        int size = getImage().getHeight();
-        int radius = (int)Math.abs(vy) + size;
-        geto
-        List<Floor> list = getObjectsInRange(radius, Floor.class);
-        System.out.println(radius);
-        double lowestDiff = 100000;
-        Actor closestObj = null;
-        for(Actor obj : list){
-            double tempDiff = ObjectYOffset(obj);
-            System.out.println(tempDiff);
-            if(Math.abs(tempDiff) < Math.abs(lowestDiff)){
-                closestObj = obj;
-            }
-        }
-        if(lowestDiff > 0){
-                        //closestObj.setImage("brick.jpg");
-            System.out.println("hitdetect");
-            return closestObj;
-        }
-        return null;
-        */
        return object;
     }
     
@@ -215,16 +185,6 @@ public abstract class PreciseMario extends SmoothMover
             if(index != -1){
                 return true;
             }
-            /*
-            if(key.equals("up")){
-               if(originalvx < 0){
-                        getWorld().addObject(new Run("mario/run_left/mario_",3, 6, "left", -1, 0), (int)px, (int)py);
-                    } else {
-                        getWorld().addObject(new Run("mario/run_right/mario_",0, 3, "right", 1, 0), (int)px, (int)py);
-                    
-                    } 
-            }
-            */
         return false;
     }
     
