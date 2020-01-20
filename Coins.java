@@ -10,4 +10,7 @@ public class Coins extends Actor
             coins++;
         }
     }    
+    public int textDisp() {
+       return coins; 
+    }
 }
