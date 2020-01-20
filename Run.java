@@ -22,7 +22,7 @@ public class Run extends PreciseMario
     public Run(String folder, int firstFile, int lastFile, String key,double vx,double vy){
         
         super(key, vx, vy);
-        BackGround1.scrollActor = this;
+        BackGround1.scrollActor = this; //scroller tracks this
         img = new GreenfootImage[(lastFile-firstFile)+1];
         if(isMarioBig()){
             System.out.println("b");
@@ -49,35 +49,18 @@ public class Run extends PreciseMario
             
             
         
-        //CHECK
-            //Floor hitdetect
-            
-            /*
-             * if(floorHitDetection() != null){ 
-                Actor obj = super.floorHitDetection();
-               // System.out.println(getY() + " + " + getImage().getHeight()/2 + "-" + obj.getY() + "-" + obj.getImage().getHeight()/2);
-                double difference = ObjectYOffset(obj);
-                //System.out.println(difference);
-                py -= difference; 
-                py -= vy;
-            }
-            */
-           //if(Math.abs(vx) > 4){
-           //    accx = 0;
-           // }
-           //System.out.println(Greenfoot.isKeyDown(key) + " " + key);
-           if(!Greenfoot.isKeyDown(key)){
+           if(!Greenfoot.isKeyDown(key)){ //start accerlating if key is pushed
                accx = 0;
                
                frame= 0;
                
-               if(originalvx > 0 && vx < 0){
+               if(originalvx > 0 && vx < 0){ //stops deceleration if vx is 0
                 decx = 0;
                 vx = 0.001;
                 } else if(originalvx < 0 && vx > 0){
                 decx = 0;
                 vx = 0.001;
-                } else{
+                } else{ //start decelerating
                   decx = originaldecx;
                   stopAccelerating();
                 }
@@ -87,7 +70,7 @@ public class Run extends PreciseMario
                //ax = 0.8;
            } else {
                //vx = originalvx;
-               if(Math.abs(vx) >= Math.abs(terminalvx)){
+               if(Math.abs(vx) >= Math.abs(terminalvx)){ //stop from running too fast
                    accx = 0;
                    System.out.println("termvx reached");
                } else {
@@ -97,11 +80,11 @@ public class Run extends PreciseMario
                startAccelerating();
                
             }
-                      updatePos();
+            updatePos();
 
            
            
-           if(isTouching(Floor.class)){
+           if(isTouching(Floor.class)){ //moves mario back up to floor 
                Actor obj = floorHitDetection();
                if(obj != null){
                    vy = 0;
@@ -111,48 +94,13 @@ public class Run extends PreciseMario
                }
            }
            
+           
            draw(frame);
            
            if(otherKeyPressed()){
                getWorld().removeObject(this);
            }
-           /*
-            if(isTouching(Floor.class)){
-                
-                System.out.println(getY());
-            //super.gravity = 0;
-                //setLocation(getX(), getY()-(vy));
-                Actor obj = floorHitDetection();
-                double diff = 0;
-                if(obj != null){
-                    diff = ObjectYOffset(obj);
-                }
-                                setLocation(getX(), getY()-diff);
-
-                //System.out.println("new " +getY());
-            } else{
-                           //setLocation(getX() + vx, getY() +vy); 
-
-            }
-        //DRAW
-            //draws sprites
-            if(otherKeyPressed()){ 
-                getWorld().removeObject(this);
-            } else if(Greenfoot.isKeyDown(key)){
-                draw(frame);
-                changeVel(originalvx, originalvy);
-            } else {
-                draw(0);
-                
-                changeVel(0, 0);
-                
-                frame = 0;
-            }  
-            //System.out.println(getExactX() + " " + getExactY());
-            //setLocation(px, py);
-            
-            //System.out.println(getExactX() + " " + getExactY());
-            */
+           
     }  
     
     public void draw(int frame){
