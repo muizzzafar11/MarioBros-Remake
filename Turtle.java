@@ -5,33 +5,33 @@ public class Turtle extends Actor
     private int movingDirection = -1;
     private int frames = 1;
     private int animationCounter = 0;
-
+    //setting required images
     private GreenfootImage Turtle1 = new GreenfootImage("Turtle2.png");
     private GreenfootImage Turtle2 = new GreenfootImage("Turtle3.png");
     private GreenfootImage Turtle3 = new GreenfootImage("Turtle4.png");
     private GreenfootImage Turtle4 = new GreenfootImage("Turtle5.png");
     public void act() 
     {   animationCounter++;
-        if(getX() <= 0)
+        if(getX() <= 0)//removed if offscreen
         {
             getWorld().removeObject(this);
         }
         else{
-        if(movingDirection == -1 && animationCounter% 14 == 0){
+        if(movingDirection == -1 && animationCounter% 14 == 0){ //change frame if facing left
             Animation2();  
 
         }
 
-        if(movingDirection == 1 && animationCounter% 14 == 0){
+        if(movingDirection == 1 && animationCounter% 14 == 0){//change frame if facing left
             Animation();  
         }
 
 
-        if(getX() < 200)
+        if(getX() < 200)//change direction
         {
         movingDirection = 1;
         } 
-        if(getX() > 600);
+        if(getX() > 600);//change direction
         {   
         movingDirection = -1;
         }
@@ -42,19 +42,19 @@ public class Turtle extends Actor
 
         }
 
-        while(isTouching(Floor.class))
+        while(isTouching(Floor.class)) //stops koopa from falling through
         {
             setLocation(getX() - (movingDirection), getY() - 1);
 
         }
-        if(isTouching(PreciseMario.class))
+        if(isTouching(PreciseMario.class))//removed if mario touches it
             getWorld().removeObject(this);
             
         }
     }
 
      
-    public void Animation(){
+    public void Animation(){//set image based on frame
         if(frames == 1){
             setImage(Turtle1);
         }

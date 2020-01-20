@@ -5,6 +5,7 @@ public class Goomba extends Actor
     private int frames = 1;
     private int animationCounter = 0;
 
+    //setting images
     private GreenfootImage Goomba1 = new GreenfootImage("Enemies0.png");
     private GreenfootImage Goomba2 = new GreenfootImage("Enemies1.png");
     private GreenfootImage Goomba3 = new GreenfootImage("Enemies2.png");
@@ -13,17 +14,17 @@ public class Goomba extends Actor
     public void act() 
     {   
         if(getX() <= 0)
-        {
+        { //remove if offscreen
             getWorld().removeObject(this);
         }else {
 
-            animationCounter++;
+            animationCounter++; //change frame based on direction
             if(movingDirection == -1 && animationCounter% 14 == 0){
                 Animation();  
                 //}
             }
 
-            if(movingDirection == 1 && animationCounter% 14 == 0){
+            if(movingDirection == 1 && animationCounter% 14 == 0){//show frame based on direction
                 Animation2();  
             }
 
@@ -38,13 +39,13 @@ public class Goomba extends Actor
 
         
             setLocation(getX(), getY() + 1);
-            while(isTouching(Floor.class))
+            while(isTouching(Floor.class)) //stops goomba from falling through
             { 
                 setLocation(getX() + (movingDirection), getY() - 1);
 
             }
             
-            if(isTouching(PreciseMario.class)) {
+            if(isTouching(PreciseMario.class)) {//removed if mario touches it
             getWorld().removeObject(this);
           }
             // while(isTouching(Floor.class))
@@ -55,7 +56,7 @@ public class Goomba extends Actor
         }      
     }
 
-    public void Animation(){
+    public void Animation(){ //sets image based on frame
         if(frames == 1){
             setImage(Goomba1);
         }

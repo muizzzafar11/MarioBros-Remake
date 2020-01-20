@@ -17,7 +17,7 @@ public class Floor extends Actor
         // Add your action code here.
     }    
     
-    protected void addedToWorld(World world){
+    protected void addedToWorld(World world){ //scaling
         getImage().scale(BackGround1.width, BackGround1.height/6);
     }
 }

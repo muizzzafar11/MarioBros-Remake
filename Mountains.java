@@ -8,7 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Mountains extends Actor
 {
-    public Mountains () {
+    public Mountains () { //setting and scaling image
         GreenfootImage mountImage = getImage();
         int mountWidth = mountImage.getWidth()+95;
         int mountHeight = mountImage.getHeight()+95;

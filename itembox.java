@@ -24,7 +24,7 @@ public class itembox extends Actor
     
     public void act() 
     {
-        if(isTouching(PreciseMario.class)) {
+        if(isTouching(PreciseMario.class) && !hit) { //increases score if hit
             new Coins().coins += 5;
         }
         if(!hit){
@@ -41,7 +41,7 @@ public class itembox extends Actor
            draw(4); //draws image that shows block is hit
        }
        
-       if(isTouching(PreciseMario.class)){
+       if(isTouching(PreciseMario.class)){ //stops score from being increased
            hit = true;
            //getWorld().removeObject(this);
        }
