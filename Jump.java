@@ -15,7 +15,7 @@ public class Jump extends PreciseMario
     int direction = 0;
     int bigMariosizx = 12, bigMariosizy = 7; 
     int smallMariosizx = 13, smallMariosizy = 10;
-    
+    static Run run = new Run();
     public Jump(String folder, int firstFile, int lastFile, String key, double vx, double vy,int direction){
         super(key, vx, vy);
         BackGround1.scrollActor = this; //tells scroller to track this mario
@@ -74,7 +74,19 @@ public class Jump extends PreciseMario
         
         
         
-        
+        // if (isTouching(Barrel.class)) {
+            // run.Lives--;
+        // } 
+        // if (isTouching(Goomba.class)) {
+            // run.Lives--;
+        // }
+        // if (isTouching(Turtle.class)) {
+            // run.Lives--;
+        // }
+        // if (run.Lives <= 0) {
+            // Greenfoot.setWorld(new Finish("You died"));
+            // Greenfoot.stop();
+        // }
         
         
         

@@ -38,7 +38,7 @@ public class Barrel extends Actor
             setLocation(getX() - 3, getY() - 3);
             
           }
-          if(isTouching(PreciseMario.class)) {
+          if(isTouching(Run.class)) {
             getWorld().removeObject(this);
           }
        }

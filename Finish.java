@@ -19,18 +19,10 @@ public class Finish extends World
     public static Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
     public static int width = (int)screenSize.getWidth();
     public static int height = (int)screenSize.getHeight();
-    public Finish()
+    public Finish(String text)
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
-        super((int)(screenSize.getWidth()/2.5), (int)(screenSize.getHeight()/1.25), 1);  
-        //addObject(new Floor2(), 125, 1000);
-        //addObject(new Floor2(), 375, 1000);
-        //addObject(new Floor2(), 625, 1000);
-        //addObject(new Floor2(), 875, 1000);
-        //addObject(new Floor2(), 1125, 1000);
-        //addObject(new Floor2(), 1375, 1000);
-        //addObject(new Princess(), 145, 940);
-        //addObject(new Mario(), 85, 940);
-        showText("YOU WIN", 750, 600);
+        super(width-500, height-500,1);  
+        showText("" + text, (width-500)/2, (height-500)/2);
     }
 }
