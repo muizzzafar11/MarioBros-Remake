@@ -1,4 +1,4 @@
-import greenfoot.*;
+import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
  * Write a description of class Floor here.
@@ -15,6 +15,9 @@ public class Floor extends Actor
     public void act() 
     {
         // Add your action code here.
-        
     }    
+    
+    protected void addedToWorld(World world){
+        getImage().scale(BackGround1.width, BackGround1.height/6);
+    }
 }

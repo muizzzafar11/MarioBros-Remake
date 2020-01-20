@@ -1,12 +1,18 @@
 import greenfoot.*;
 public class DK extends Actor
 {
-    long lastTime;
+    private long lastTime;
+    Mario mario = new Mario();
+    public DK(){
+        GreenfootImage dkImage = getImage();
+        dkImage.scale(mario.getMarioWide()+50, mario.getMarioHigh()+50);
+        setImage(dkImage);
+    }
     public void act() 
     {
         if(isTouching(PreciseMario.class))
         {
-            Greenfoot.setWorld(new Finish());
+            //Greenfoot.setWorld(new Finish());
 
             Greenfoot.stop();
         }

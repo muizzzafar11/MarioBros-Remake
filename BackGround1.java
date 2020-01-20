@@ -1,47 +1,63 @@
 import greenfoot.*;
-
-/**
- * Write a description of class BackGround1 here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
 import java.awt.Toolkit;
 import java.awt.Dimension;
+
 public class BackGround1 extends World
 {
-    public static Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-    public static int width = (int)screenSize.getWidth();
-    public static int height = (int)screenSize.getHeight();
-    /**
-     * Constructor for objects of class BackGround1.
-     * 
-     */
-    public BackGround1()
-    {    
-        super((int)(screenSize.getWidth()/2.5), (int)(screenSize.getHeight()/1.25), 1);         
-        addObject(new DK(), 200, 150);
-        addObject(new Floor(), 125, 219);
-        addObject(new Floor(), 375, 219);
-        addObject(new Floor(), 625, 219);
-        addObject(new Floor(), 875, 219);
-        addObject(new Floor2(), 625, 500);
-        addObject(new Floor2(), 875, 500);
-        addObject(new Floor2(), 1125, 500);
-        addObject(new Floor2(), 1375, 500);
-        addObject(new Floor(), 125, 781);
-        addObject(new Floor(), 375, 781);
-        addObject(new Floor(), 625, 781);
-        addObject(new Floor(), 875, 781);
-        addObject(new Floor2(), 125, 1000);
-        addObject(new Floor2(), 375, 1000);
-        addObject(new Floor2(), 625, 1000);
-        addObject(new Floor2(), 875, 1000);
-        addObject(new Floor2(), 1125, 1000);
-        addObject(new Floor2(), 1375, 1000);
-        //addObject(new Run("mario/run_left/smw_",3,4,"left", -1, 0), 500, 400);
-        addObject(new Run("mario/run_right/smw_",0,1,"right", 1, 0), 500, 400);
+    // TODO: set all of the standards according to the height of the screen
+    // Gets resolution of current display
+    public static Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize(); 
+    public static int width = (int)(screenSize.getWidth()/1.5); 
+    public static int height = (int)(screenSize.getHeight()/1.25);
 
+    //private static int floorDist = 75;
+    private Scroller scroller;
+    private Actor scrollActor;
+    private int worldLength = 5000;
+    private int score = 0; 
+    int mod = 1;
+    //private int backHeight, backWidth;
+    public BackGround1() {    // Scales the size of the screen
+        super(width, height, 1, false);
+        GreenfootImage backImage = new GreenfootImage("back.png");
+        scroller = new Scroller(this, backImage, worldLength, height);
+        scrollActor = new Mario();
+        addObject(scrollActor, 20, (height-60));
+        addObject(new DK(), 4500 , (height-100));
+        addObject(new Goomba(), 450 , (height-54));
+        addObject(new Turtle(), 3250 , (height-54));
+        addObject(new Run("mario/run_right/smw_",0,1,"right", 1, 0), 500, 400);
+        // for(int i = 0; i < worldLength; i += 1000)// This is for the secondary floor, change after += to change the distance. 
+            // addObject(new Floor(), i, height-20);
+        int j = height-110;
+        for(int i = 400; i < worldLength; i+=750){
+            if(mod % 3 == 0){
+            addObject(new Mountains2(),i+150,j-40);
+            addObject(new Mountains(), i , j-20);
+            addObject(new Mountains(), i+300,j-20);
+        }
+            addObject(new itembox("images/itembox/item_", 0, 4), 500
+            , (height-200));
+            addObject(new Floor(), i, height-50);            
+            addObject(new Coins(),Greenfoot.getRandomNumber(worldLength-50) 
+            , Greenfoot.getRandomNumber(height-80));
+        mod ++;
+       }
+}
+
+    public void act() {
+        scroll();  
+        showText("Score: "+new Coins().textDisp(), 40, 20);
+    }
+
+    private void scroll () {
+        if(scrollActor.getX() < 10) {
+            scrollActor.setLocation(10, scrollActor.getY());
+        }
+        int dsx, dsy;
+        dsx = scrollActor.getX()-500;
+        dsy = 0;
+        scroller.scroll(dsx, dsy);
     }
     
    

@@ -1,5 +1,6 @@
 import greenfoot.*;
-
+import java.awt.Toolkit;
+import java.awt.Dimension;
 /**
  * Write a description of class Finish here.
  * 
