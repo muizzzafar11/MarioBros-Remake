@@ -29,8 +29,7 @@ public class BackGround1 extends World
         addObject(new DK(), 4950  , (height-250));
         addObject(new Goomba(), 450 , (height-54));
         addObject(new Turtle(), 3250 , (height-54));
-        scrollActor = new Run("mario/run_right/smw_",0,3,"right", 1, 0);
-        addObject(scrollActor, 20, (height-60));
+        
         //addObject(new Run("mario/run_right/smw_",0,1,"right", 1, 0), 500, 400);
         // for(int i = 0; i < worldLength; i += 1000)// This is for the secondary floor, change after += to change the distance. 
         // addObject(new Floor(), i, height-20);
@@ -53,6 +52,9 @@ public class BackGround1 extends World
             , Greenfoot.getRandomNumber(height-80));
             mod ++;
         }
+        
+        scrollActor = new Run("mario/run_right/smw_",0,3,"right", 1, 0);
+        addObject(scrollActor, 20, (height-60));
     }
     static Run mover = new Run();
         public void act() {

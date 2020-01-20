@@ -18,7 +18,7 @@ public class PreciseMario extends SmoothMover
     protected double accx;
     protected double decx;
     protected int stage = 2;
-    static int Lives = 3;
+    public static int Lives = 3;
     //static int Lives = 3;
     int height, width;
     

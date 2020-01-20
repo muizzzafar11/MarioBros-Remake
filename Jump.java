@@ -75,17 +75,20 @@ public class Jump extends PreciseMario
         
         
         // if (isTouching(Barrel.class)) {
-            // run.Lives--;
+            // Lives--;
         // } 
         // if (isTouching(Goomba.class)) {
-            // run.Lives--;
+            // Lives--;
         // }
         // if (isTouching(Turtle.class)) {
-            // run.Lives--;
+            // Lives--;
         // }
-        // if (run.Lives <= 0) {
+        // if (Lives <= 0) {
             // Greenfoot.setWorld(new Finish("You died"));
             // Greenfoot.stop();
+        // }
+        // if (otherKeyPressed()) {
+            // getWorld().removeObject(this);
         // }
         
         
