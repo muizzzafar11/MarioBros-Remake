@@ -14,7 +14,7 @@ public abstract class PreciseMario extends SmoothMover
      */
     public double gravity = 2.0;
     protected double originalvx, originalvy, originalaccx, originaldecx;
-    protected double px, py, vx, vy, terminalvx;
+    protected double vx, vy, terminalvx;
     protected double accx;
     protected double decx;
     protected int stage = 2;

@@ -159,8 +159,7 @@ public class Run extends PreciseMario
     
     
     protected void addedToWorld(World world){
-        this.px = getX(); 
-        this.py = getY();
+        
         if(isMarioBig()){
             scaleSprites(img, bigMariosizx, bigMariosizy);
         } else {

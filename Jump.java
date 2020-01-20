@@ -41,13 +41,7 @@ public class Jump extends PreciseMario
                }
                startAccelerating();
                //System.out.println(vx + " " + accx);
-               if(Math.abs(vx) > Math.abs(terminalvx)){
-                   accx = 0;
-               } else {
-               accx = originalaccx;
-                
-               }
-               startAccelerating();
+               
                
            /* 
             if(!Greenfoot.isKeyDown(key)){
@@ -141,8 +135,7 @@ public class Jump extends PreciseMario
     }
     
     protected void addedToWorld(World world){
-        super.px = getX();
-        super.py = getY();
+        
         if(isMarioBig()){
             scaleSprites(img, bigMariosizx, bigMariosizy);
         } else {
