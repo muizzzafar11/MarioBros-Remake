@@ -17,13 +17,15 @@ public abstract class PreciseMario extends SmoothMover
     protected double px, py, vx, vy, terminalvx;
     protected double accx;
     protected double decx;
+    protected int stage = 2;
     
     int Lives = 3;
     int height, width;
     
     String key = "";
     String[] possibleKeys = {"left", "right", "up"};
-    
+    String ext = ".png";
+    String extrafileletter = "";
     
     public PreciseMario(String key, double vx, double vy){
        this.key = key;
@@ -42,6 +44,27 @@ public abstract class PreciseMario extends SmoothMover
        originaldecx = decx;
        terminalvx = 5;
        
+    }
+    
+    public void setupSprites(GreenfootImage[] img, String folder, int firstFile){
+        for(int i = 0; i < img.length; i++){
+            img[i] = new GreenfootImage(folder + (firstFile+i) +extrafileletter + ext);
+        }
+    }
+    
+    public void scaleSprites(GreenfootImage[] img, int sizeX, int sizeY){
+        for(int i = 0; i < img.length; i++){
+            img[i].scale(getWorld().getHeight()/sizeX, getWorld().getHeight()/sizeY);
+
+        }
+    }
+    
+    public boolean isMarioBig(){
+        if(stage == 2){
+            return true;
+        } else {
+            return false;
+        }
     }
     
     public void updatePos(){
@@ -145,19 +168,19 @@ public abstract class PreciseMario extends SmoothMover
             
                 case 0:
                     if(Greenfoot.isKeyDown("up")){
-                        getWorld().addObject(new Jump("mario/jump_left/smw_",10, 11, "up", -3, -30, -1), (int)getX(), (int)getY());
+                        getWorld().addObject(new Jump("mario/jump_left/smw_",0, 1, "up", -3, -30, -1), (int)getX(), (int)getY());
 
                     } else {
-                    getWorld().addObject(new Run("mario/run_left/smw_",3, 4, "left", -1, 0), (int)getX(), (int)getY());
+                    getWorld().addObject(new Run("mario/run_left/smw_",0, 3, "left", -1, 0), (int)getX(), (int)getY());
                     
                     }
                     break;
                 case 1:
                     if(Greenfoot.isKeyDown("up")){
-                        getWorld().addObject(new Jump("mario/jump_right/smw_",10, 11, "up", 3, -30, 1), (int)getX(), (int)getY());
+                        getWorld().addObject(new Jump("mario/jump_right/smw_",0, 1, "up", 3, -30, 1), (int)getX(), (int)getY());
 
                     } else {
-                    getWorld().addObject(new Run("mario/run_right/smw_", 0, 1, "right", 1, 0), (int)getX(), (int)getY());
+                    getWorld().addObject(new Run("mario/run_right/smw_", 0, 3, "right", 1, 0), (int)getX(), (int)getY());
                     
                     }
                     break;
@@ -169,7 +192,7 @@ public abstract class PreciseMario extends SmoothMover
                         }else{
                             newVx = 0.0;
                         }
-                        getWorld().addObject(new Jump("mario/jump_right/smw_",10, 11, "up", newVx, -30, 1), (int)getX(), (int)getY());
+                        getWorld().addObject(new Jump("mario/jump_right/smw_",0, 1, "up", newVx, -30, 1), (int)getX(), (int)getY());
                         
                     } else {
                         double newVx;
@@ -178,7 +201,7 @@ public abstract class PreciseMario extends SmoothMover
                         }else{
                             newVx = 0.0;
                         }
-                        getWorld().addObject(new Jump("mario/jump_left/smw_",10, 11, "up", newVx, -30, -1), (int)getX(), (int)getY());
+                        getWorld().addObject(new Jump("mario/jump_left/smw_",0, 1, "up", newVx, -30, -1), (int)getX(), (int)getY());
                         
                     }
                 
