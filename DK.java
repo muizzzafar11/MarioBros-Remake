@@ -13,6 +13,7 @@ public class DK extends Actor
     {
         if(isTouching(PreciseMario.class))
         {
+            Greenfoot.setWorld(new Finish("You Won"));
             Greenfoot.stop();
         }
         if(System.currentTimeMillis() - lastTime > 2500)

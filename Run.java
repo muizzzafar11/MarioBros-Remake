@@ -17,7 +17,7 @@ public class Run extends PreciseMario {
     String ext = ".png";
     int bigMariosizx = 13, bigMariosizy = 8;
     int smallMariosizx = 13, smallMariosizy = 12;
-    static int Lives = 3;
+    //static int Lives;
 
     public Run(String folder, int firstFile, int lastFile, String key, double vx, double vy) {
 
@@ -31,6 +31,7 @@ public class Run extends PreciseMario {
         /// ScrollActor = this;
         setupSprites(img, folder, firstFile);
         setImage(img[0]);
+        
 
     }
 
@@ -93,23 +94,25 @@ public class Run extends PreciseMario {
 
         draw(frame);
 
-        if (otherKeyPressed()) {
-            getWorld().removeObject(this);
-        }
-
-        if (isTouching(Turtle.class)) {
-            Lives--;
-        }
+        
+        
+        
         if (isTouching(Barrel.class)) {
             Lives--;
-        }
+        } 
         if (isTouching(Goomba.class)) {
             Lives--;
         }
+        if (isTouching(Turtle.class)) {
+            Lives--;
+        }
         if (Lives <= 0) {
+            Greenfoot.setWorld(new Finish("You died"));
             Greenfoot.stop();
         }
-
+        if (otherKeyPressed()) {
+            getWorld().removeObject(this);
+        }
     }
 
     public void draw(int frame) {
