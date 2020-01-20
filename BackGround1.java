@@ -26,13 +26,13 @@ public class BackGround1 extends World
         addObject(new DK(), 4500 , (height-100));
         addObject(new Goomba(), 450 , (height-54));
         addObject(new Turtle(), 3250 , (height-54));
-        for(int i = 0; i < worldLength; i += 1000)// This is for the secondary floor, change after += to change the distance. 
-            addObject(new Floor(), i, height-20);
+        // for(int i = 0; i < worldLength; i += 1000)// This is for the secondary floor, change after += to change the distance. 
+            // addObject(new Floor(), i, height-20);
         int j = height-110;
-        for(int i = 400; i < worldLength; i+=900){
-            addObject(new Mountains2(),i+70,j-15);
+        for(int i = 400; i < worldLength; i+=750){
+            addObject(new Mountains2(),i+120,j-15);
             addObject(new Mountains(), i , j);
-            addObject(new Mountains(), i+120,j);
+            addObject(new Mountains(), i+230,j);
             addObject(new itembox("images/itembox/item_", 0, 4), 500 , (height-200));
             addObject(new Floor(), i, height-50);            
             addObject(new Coins(),Greenfoot.getRandomNumber(worldLength-50) 

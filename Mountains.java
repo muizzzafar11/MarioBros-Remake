@@ -9,11 +9,11 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Mountains extends Actor
 {
     public Mountains () {
-        // GreenfootImage mountImage = getImage();
-        // int mountWidth = mountImage.getWidth();
-        // int mountHeight = mountImage.getHeight();
-        // mountImage.scale(mountWidth,mountHeight);
-        // setImage(mountImage);
+        GreenfootImage mountImage = getImage();
+        int mountWidth = mountImage.getWidth()+75;
+        int mountHeight = mountImage.getHeight()+75;
+        mountImage.scale(mountWidth,mountHeight);
+        setImage(mountImage);
     }
 
     public void act() 
